@@ -1,0 +1,17 @@
+<div class="clr-example">
+    <clr-tabs>
+        <clr-tab>
+            <button clrTabLink>Customer</button>
+            <clr-tab-content clrTabContentId="content1" *clrIfActive="true">
+                <app-customer-search></app-customer-search>
+            </clr-tab-content>
+        </clr-tab>
+
+        <clr-tab>
+            <button clrTabLink>Create/Update</button>
+            <clr-tab-content>
+                <p>Content for Management tab.</p>
+            </clr-tab-content>
+        </clr-tab>
+    </clr-tabs>
+</div>

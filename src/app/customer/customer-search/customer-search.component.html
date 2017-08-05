@@ -1,0 +1,34 @@
+<h3>Customer Management</h3>
+<div class="col-md-12">
+  <form [formGroup]='form'>
+    <section class="form-block">
+      <div class="form-group row flex-items-md-center">
+        <div class="col-md-4 row">
+          <div class="col-md-4">
+            <label>คำค้นหา : </label>
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control">
+          </div>
+        </div>
+        <div class="col-md-4 row">
+          <div class="col-md-4">
+            <label>ค้นหาจาก : </label>
+          </div>
+          <div class="col-md-8">
+            <div class="col-md-12">
+                <div class="select form-control">
+                    <select>
+                        <option>ชื่อลูกค้า</option>
+                        <option>รหัสลูกค้า</option>
+                        <option>ที่อยู่</option>
+                        <option>ที่อยู่ที่ทำงาน</option>
+                    </select>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </form>
+</div>
