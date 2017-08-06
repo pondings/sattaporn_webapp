@@ -23,16 +23,20 @@ export class CustomerSearchComponent implements OnInit {
   createForm() {
     this.form = this.fb.group({
       searchKeyword: '',
-      findMethod: ''
+      findMethod: ['', Validators.required]
     });
   }
 
   public onSubmit(customer: Customer) {
-    this.customerService.findCustomer(customer).subscribe(rs => this.emitResult(rs),error => console.log(error));
+    this.customerService.findCustomer(customer).subscribe(rs => this.emitResult(rs), error => console.log(error));
   }
 
   public emitResult(customerList: any) {
     this.searchResult.emit(customerList);
+  }
+
+  private resetForm() {
+    this.form.reset();
   }
 
 

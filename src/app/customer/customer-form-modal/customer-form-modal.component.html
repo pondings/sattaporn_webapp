@@ -1,5 +1,5 @@
 <clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false" [clrModalStaticBackdrop]="true" [clrModalSize]="'lg'" #customerFormModal>
-    <h3 class="modal-title">Add new customer</h3>
+    <h3 class="modal-title">{{customerFormModalHeader}}</h3>
     <div class="modal-body">
         <div class="col-md-12">
             <form [formGroup]='form'>
@@ -77,6 +77,6 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline" (click)="closeModal()">Cancel</button>
-        <button type="submit" class="btn btn-primary" (click)="onSubmit(form.value)">Add</button>
+        <button type="submit" class="btn btn-primary" (click)="onSubmit(form.value)">{{viewMode == true ? "Edit" : "Add"}}</button>
     </div>
 </clr-modal>

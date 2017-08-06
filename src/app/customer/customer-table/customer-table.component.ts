@@ -1,7 +1,7 @@
 import { CustomerSearchComponent } from './../customer-search/customer-search.component';
 import { CustomerService } from './../../shared/services/customer.service';
 import { Customer } from './../../shared/models/Customer';
-import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-customer-table',
@@ -10,6 +10,7 @@ import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 })
 export class CustomerTableComponent implements OnInit {
 
+  @Output() viewCustomerInfo: EventEmitter<Customer> = new EventEmitter();
   @ViewChild('btnGroup') btnGroupTemp: TemplateRef<any>;
   @ViewChild('phone') startPackageDateTemp: TemplateRef<any>;
   @ViewChild('code') codeTemp: TemplateRef<any>;
@@ -30,6 +31,10 @@ export class CustomerTableComponent implements OnInit {
       { name: 'Address', cellTemplate: this.addressTemp },
       { name: 'Command', cellTemplate: this.btnGroupTemp, width: 80, cellClass: 'text-center' }
     ];
+  }
+
+  private infoBtnClicked(customer: Customer) {
+    this.viewCustomerInfo.emit(customer);
   }
 
   private findAll() {

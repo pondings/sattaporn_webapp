@@ -1,3 +1,4 @@
+import { Customer } from './../shared/models/Customer';
 import { CustomerFormModalComponent } from './customer-form-modal/customer-form-modal.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
@@ -20,8 +21,12 @@ export class CustomerComponent implements OnInit {
   ngOnInit() {
   }
 
+  public viewCustomerInfo(customer: Customer) {
+    this.customerFormModal.viewCustomerInfo(customer);
+  }
+
   public addBtnClicked() {
-    this.customerFormModal.openModal();
+    this.customerFormModal.createCustomer();
   }
 
 }
