@@ -1,9 +1,12 @@
+import { CustomerService } from './shared/services/customer.service';
 import { CustomerModule } from './customer/customer.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,15 +21,17 @@ import { ClarityModule } from 'clarity-angular';
     AppComponent
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     AppRoutingModule,
     SharedModule,
     CoreModule,
     DashboardModule,
     CustomerModule,
-    ClarityModule.forRoot()
+    ClarityModule.forRoot(),
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

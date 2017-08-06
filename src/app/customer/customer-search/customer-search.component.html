@@ -1,6 +1,6 @@
 <h3>Customer Management</h3>
 <div class="col-md-12">
-  <form [formGroup]='form'>
+  <form [formGroup]='form' (submit)="onSubmit(form.value)">
     <section class="form-block">
       <div class="form-group row flex-items-md-center">
         <div class="col-md-4 row">
@@ -8,7 +8,7 @@
             <label>คำค้นหา : </label>
           </div>
           <div class="col-md-6">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName='searchKeyword'>
           </div>
         </div>
         <div class="col-md-4 row">
@@ -18,11 +18,12 @@
           <div class="col-md-8">
             <div class="col-md-12">
                 <div class="select form-control">
-                    <select>
-                        <option>ชื่อลูกค้า</option>
-                        <option>รหัสลูกค้า</option>
-                        <option>ที่อยู่</option>
-                        <option>ที่อยู่ที่ทำงาน</option>
+                    <select formControlName='findMethod'>
+                        <option value="fullName">ชื่อลูกค้า</option>
+                        <option value="code">รหัสลูกค้า</option>
+                        <option value="address">ที่อยู่</option>
+                        <option value="workAddress">ที่อยู่ที่ทำงาน</option>
+                        <option value="phone">เบอร์โทรศัพท์</option>
                     </select>
                 </div>
             </div>
@@ -30,5 +31,11 @@
         </div>
       </div>
     </section>
+    <div class="col-md-12">
+      <div class="row flex-items-md-center">
+        <button type="submit" class="btn btn-primary"><clr-icon shape="search"></clr-icon> Search</button>
+        <button type="reset" class="btn btn-danger" [disabled]="form.pristine"><clr-icon shape="refresh"></clr-icon> Reset</button>
+      </div>
+    </div>
   </form>
 </div>

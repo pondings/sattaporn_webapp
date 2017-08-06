@@ -1,0 +1,82 @@
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false" [clrModalStaticBackdrop]="true" [clrModalSize]="'lg'" #customerFormModal>
+    <h3 class="modal-title">Add new customer</h3>
+    <div class="modal-body">
+        <div class="col-md-12">
+            <form [formGroup]='form'>
+                <section class="form-block">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <div class="col-md-4 row">
+                                <div class="col-md-6">
+                                    <label>คำนำหน้า </label>
+                                </div>
+                                <div class="col-md-6 pull-left">
+                                    <select formControlName='sirName'>
+                                        <option value="นาย">นาย</option>
+                                        <option value="นาง">นาง</option>
+                                        <option value="นางสาว">นางสาว</option>
+                                        <option value="Mr.">Mr.</option>
+                                        <option value="Ms.">Ms.</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 row">
+                                <div class="col-md-2">
+                                    <label>ชื่อ </label>
+                                </div>
+                                <div class="col-md-10 ">
+                                    <input type="text" class="form-control" formControlName='name'>
+                                </div>
+                            </div>
+                            <div class="col-md-4 row">
+                                <div class="col-md-4">
+                                    <label>นามสกุล </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" formControlName='lname'>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top: 5vh"></div>
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <div class="col-md-6 row">
+                                <div class="col-md-4">
+                                    <label>เบอร์โทรศัพ์ </label>
+                                </div>
+                                <div class="col-md-8 ">
+                                    <input type="text" max="10" class="form-control" formControlName='phone'>
+                                </div>
+                            </div>
+                            <div class="col-md-6 row">
+                                <div class="col-md-4">
+                                    <label>ที่อยู่ปัจจุบัน </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <textarea class="form-control" formControlName='address'></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <div class="col-md-6 row">
+                                <div class="col-md-4">
+                                    <label>ที่อยู่ที่ทำงาน </label>
+                                </div>
+                                <div class="col-md-8 ">
+                                    <textarea class="form-control" formControlName='workAddress'></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="closeModal()">Cancel</button>
+        <button type="submit" class="btn btn-primary" (click)="onSubmit(form.value)">Add</button>
+    </div>
+</clr-modal>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { CustomerFormModalComponent } from './customer-form-modal/customer-form-modal.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 /**
  * Third-Party
@@ -12,10 +13,15 @@ import { Tabs } from 'clarity-angular';
 })
 export class CustomerComponent implements OnInit {
 
+  @ViewChild(CustomerFormModalComponent) customerFormModal: CustomerFormModalComponent;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public addBtnClicked() {
+    this.customerFormModal.openModal();
   }
 
 }
