@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  api: 'http://www.pondingz.com:5741/'
+  api: 'http://localhost:8080/'
 };
