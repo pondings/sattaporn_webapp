@@ -15,10 +15,22 @@ export class CustomerService {
 
   constructor(protected http: Http) { }
 
+  public updateCustomer(customer: Customer): Observable<Customer> {
+    const options = this.getOptions();
+    const body = JSON.stringify(customer);
+    return this.http.put(this.localUrl + 'update', body, options).map(this.extractData).catch(this.handlerError);
+  }
+
   public createCustomer(customer: Customer): Observable<Customer> {
     const options = this.getOptions();
     const body = JSON.stringify(customer);
     return this.http.post(this.localUrl + 'create', body, options).map(this.extractData).catch(this.handlerError);
+  }
+
+  public removeCustomer(customer: Customer): Observable<Boolean> {
+    const options = this.getOptions();
+    const id = customer.id;
+    return this.http.delete(this.localUrl + 'remove/' + id, options).map(function() { return true; }).catch(this.handlerError);
   }
 
   public findCustomer(customer: Customer): Observable<[Customer[]]> {
@@ -29,7 +41,7 @@ export class CustomerService {
 
   public findAll(){
     const options = this.getOptions();
-    return this.http.get(this.localUrl + 'showAll',options).map(this.extractData).catch(this.handlerError);
+    return this.http.get(this.localUrl + 'showAll', options).map(this.extractData).catch(this.handlerError);
   }
 
   protected getOptions(): RequestOptions {

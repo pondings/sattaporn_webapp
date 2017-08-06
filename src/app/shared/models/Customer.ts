@@ -1,5 +1,7 @@
+import { FormGroup } from '@angular/forms';
 export class Customer {
 
+    public id: number;
     public code: string;
     public name: string;
     public lname: string;
@@ -18,5 +20,6 @@ export class Customer {
      */
     public findMethod: string;
     public searchKeyword: string;
+    public index: number;
 
 }

@@ -17,10 +17,12 @@ export class CustomerFormModalComponent implements OnInit {
 
   @ViewChild('customerFormModal') customerformModal: Modal;
   @Output() customerModel: EventEmitter<Customer> = new EventEmitter();
-  private viewMode: Boolean ;
+  @Output() updatedCustomer: EventEmitter<Customer> = new EventEmitter();
+  private viewMode: Boolean;
   private form: FormGroup;
   private opened: boolean;
   private customerFormModalHeader: string;
+  private customer: Customer;
 
   constructor(private fb: FormBuilder, private customerService: CustomerService) {
     this.createForm();
@@ -31,22 +33,49 @@ export class CustomerFormModalComponent implements OnInit {
 
   private createForm() {
     this.form = this.fb.group({
-      sirName: [{value: '', disabled: this.viewMode}],
-      name: [{value: '', disabled: this.viewMode}],
-      lname: [{value: '', disabled: this.viewMode}],
-      phone: [{value: '', disabled: this.viewMode}],
-      address: [{value: '', disabled: this.viewMode}],
-      workAddress: [{value: '', disabled: this.viewMode}]
+      id: undefined,
+      code: '',
+      sirName: [{ value: '', disabled: this.viewMode }],
+      name: [{ value: '', disabled: this.viewMode }],
+      lname: [{ value: '', disabled: this.viewMode }],
+      phone: [{ value: '', disabled: this.viewMode }, [Validators.maxLength(10)]],
+      address: [{ value: '', disabled: this.viewMode }],
+      workAddress: [{ value: '', disabled: this.viewMode }]
     });
   }
 
   public onSubmit(form: Customer) {
-    this.customerService.createCustomer(form).subscribe(rs => this.customerEmit(rs), error => console.log(error));
+    if (form.id !== undefined && form.id !== 0 && form.id !== null) {
+      this.customer.sirName = form.sirName;
+      this.customer.name = form.name;
+      this.customer.lname = form.lname;
+      this.customer.phone = form.phone;
+      this.customer.address = form.address;
+      this.customer.workAddress = form.workAddress;
+      this.customerService.updateCustomer(this.customer).subscribe(
+        rs => this.updatedCustomerEmit(rs, form.index),
+        error => console.log(error)
+      );
+    }else {
+      this.customerService.createCustomer(form).subscribe(rs => this.customerEmit(rs), error => console.log(error));
+    }
   }
 
   public customerEmit(customer: any) {
     this.customerModel.emit(customer);
     this.closeModal();
+  }
+
+  public updatedCustomerEmit(customer: any, index: number) {
+    const updatedCustomer: Customer = customer;
+    updatedCustomer.index = this.customer.index;
+    this.updatedCustomer.emit(updatedCustomer);
+    this.closeModal();
+  }
+
+  private editButtonClicked() {
+    this.viewMode = false;
+    this.form.enable();
   }
 
   public openModal() {
@@ -56,15 +85,19 @@ export class CustomerFormModalComponent implements OnInit {
 
   public createCustomer() {
     this.opened = true;
+    this.customer = null;
     this.customerFormModalHeader = 'Create Customer';
     this.viewMode = false;
     this.form.enable();
   }
 
-  public viewCustomerInfo(customer: Customer){
+  public viewCustomerInfo(customer: Customer) {
     this.opened = true;
     this.customerFormModalHeader = 'View Customer Info';
+    this.customer = { ... customer};
+    this.customer.index = customer.index;
     this.form.patchValue({
+      id: customer.id,
       sirName: customer.sirName,
       name: customer.name,
       lname: customer.lname,
@@ -72,6 +105,7 @@ export class CustomerFormModalComponent implements OnInit {
       address: customer.address,
       workAddress: customer.workAddress
     });
+    this.viewMode = true;
     this.form.disable();
   }
 
