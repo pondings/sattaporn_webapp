@@ -79,10 +79,10 @@
                                 </div>
                                 <div class="col-md-8 row">
                                     <div class="col-md-6">
-                                        <button type="button" class="btn btn-primary btn-sm" (click)="downloadDocument()">Download</button>
+                                        <button type="button" *ngIf="customer?.document1 != undefined" class="btn btn-primary btn-sm" (click)="downloadDocument()">Download</button>
                                     </div>
                                     <div class="col-md-6">
-                                        <input  type="file" (change)="fileChange($event)" class="form-control" accept=".pdf,.doc,.docx">
+                                        <input  type="file" *ngIf="(!viewMode && customer?.id != undefined)" (change)="fileChange($event)" class="form-control" accept=".pdf,.doc,.docx">
                                     </div>
                                 </div>
                             </div>

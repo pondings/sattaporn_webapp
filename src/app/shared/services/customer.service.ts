@@ -19,16 +19,9 @@ export class CustomerService {
   public downloadDocument(customer: Customer): any {
     return this.http.get(this.localUrl + 'downloadDocument/' + customer.code, { responseType: ResponseContentType.Blob }).map(
       (res) => {
-        return new Blob([res.blob()], { type: 'application/pdf' });
+        return new Blob([res.blob()], { type: 'application/word' });
       }
     );
-  }
-
-  private downloadFile(res: any) {
-    console.log(res);
-    const byteArray = new Uint8Array(res._body);
-    const blob = new Blob([byteArray], { type: 'application/pdf' });
-    saveAs(blob, 'test.pdf');
   }
 
   public uploadDocument(customer: Customer, fileList: FileList): Observable<Customer> {

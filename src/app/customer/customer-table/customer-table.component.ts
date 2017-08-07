@@ -35,8 +35,10 @@ export class CustomerTableComponent implements OnInit {
   }
 
   private infoBtnClicked(customer: Customer, index: number) {
+    const targetCustomer: Customer = this.rows[index];
+    targetCustomer.index = index;
     customer.index = index;
-    this.viewCustomerInfo.emit(customer);
+    this.viewCustomerInfo.emit(targetCustomer);
   }
 
   private findAll() {
@@ -44,12 +46,13 @@ export class CustomerTableComponent implements OnInit {
   }
 
   public editRow(customer: Customer) {
-    const updatedCustomer: Customer = this.rows[customer.index] ;
-    updatedCustomer.name = customer.name;
+    let updatedCustomer: Customer = this.rows[customer.index] ;
+    updatedCustomer.fullName = customer.fullName;
+    updatedCustomer.code = customer.code;
+    updatedCustomer.phone = customer.phone;
+    updatedCustomer.address = customer.address;
+    updatedCustomer = customer;
     this.rows[customer.index] = updatedCustomer;
-
-    this.dataTable.recalculate();
-    console.log('Row count = ' + this.dataTable.rowCount);
   }
 
   private insertUpdateRowToTop(customer: Customer) {

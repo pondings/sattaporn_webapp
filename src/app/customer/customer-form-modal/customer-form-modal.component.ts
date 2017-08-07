@@ -47,22 +47,20 @@ export class CustomerFormModalComponent implements OnInit {
   }
 
   public onSubmit(form: Customer) {
-    this.customer = form;
-    return null;
-    // if (form.id !== undefined && form.id !== 0 && form.id !== null) {
-    //   this.customer.sirName = form.sirName;
-    //   this.customer.name = form.name;
-    //   this.customer.lname = form.lname;
-    //   this.customer.phone = form.phone;
-    //   this.customer.address = form.address;
-    //   this.customer.workAddress = form.workAddress;
-    //   this.customerService.updateCustomer(this.customer).subscribe(
-    //     rs => this.updatedCustomerEmit(rs, form.index),
-    //     error => console.log(error)
-    //   );
-    // }else {
-    //   this.customerService.createCustomer(form).subscribe(rs => this.customerEmit(rs), error => console.log(error));
-    // }
+    if (form.id !== undefined && form.id !== 0 && form.id !== null) {
+      this.customer.sirName = form.sirName;
+      this.customer.name = form.name;
+      this.customer.lname = form.lname;
+      this.customer.phone = form.phone;
+      this.customer.address = form.address;
+      this.customer.workAddress = form.workAddress;
+      this.customerService.updateCustomer(this.customer).subscribe(
+        rs => this.updatedCustomerEmit(rs, this.customer.index),
+        error => console.log(error)
+      );
+    }else {
+      this.customerService.createCustomer(form).subscribe(rs => this.customerEmit(rs), error => console.log(error));
+    }
   }
 
   public fileChange(event) {
@@ -73,13 +71,9 @@ export class CustomerFormModalComponent implements OnInit {
   public downloadDocument() {
     this.customerService.downloadDocument(this.customer).subscribe(
       (res) => {
-        saveAs(res, this.customer.fullName + '-email.pdf');
+        saveAs(res, this.customer.fullName + '-email.doc');
       }
     );
-  }
-
-  private downloadFile(rs) {
-
   }
 
   public customerEmit(customer: any) {
@@ -90,6 +84,7 @@ export class CustomerFormModalComponent implements OnInit {
   public updatedCustomerEmit(customer: any, index: number) {
     const updatedCustomer: Customer = customer;
     updatedCustomer.index = this.customer.index;
+    console.log(index);
     this.updatedCustomer.emit(updatedCustomer);
     this.closeModal();
   }
@@ -124,7 +119,8 @@ export class CustomerFormModalComponent implements OnInit {
       lname: customer.lname,
       phone: customer.phone,
       address: customer.address,
-      workAddress: customer.workAddress
+      workAddress: customer.workAddress,
+      index: customer.index
     });
     this.viewMode = true;
     this.form.disable();
