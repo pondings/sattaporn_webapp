@@ -73,16 +73,18 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group row">
-                            <div class="col-md-6 row">
+                            <div class="col-md-8 row">
                                 <div class="col-md-4">
-                                    <label>เอกสาร1</label>
+                                    <label>เอกสาร</label>
                                 </div>
                                 <div class="col-md-8 row">
                                     <div class="col-md-6">
-                                        <button type="button" *ngIf="customer?.document1 != undefined" class="btn btn-primary btn-sm" (click)="downloadDocument()">Download</button>
+                                        <button #downloadBtn type="button" [disabled]="customer?.document1 == undefined" class="btn btn-primary btn-sm" (click)="downloadDocument()"><clr-icon size="24" shape="download-cloud"></clr-icon> Download</button>
                                     </div>
                                     <div class="col-md-6">
-                                        <input  type="file" *ngIf="(!viewMode && customer?.id != undefined)" (change)="fileChange($event)" class="form-control" accept=".pdf,.doc,.docx">
+                                        <button #uploadBtn [disabled]="customer?.id == undefined" (click)="openFileUploader()" type="button" class="btn btn-primary btn-sm" title="{{customer?.id == undefined ? 'Please create custoemr first!' : 'Upload Document'}}">
+                                            <clr-icon shape="upload-cloud" size="24"></clr-icon> upload 
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -90,10 +92,11 @@
                     </div>
                 </section>
             </form>
+            <input  #fileUploader type="file" style="display: none" (change)="fileChange($event)" class="form-control" accept=".pdf,.doc,.docx">
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-outline" (click)="closeModal()">Cancel</button>
-        <button type="submit" class="btn btn-primary" (click)="viewMode == true ? editButtonClicked() : onSubmit(form.value)">{{viewMode == true ? "Edit" : "Save"}}</button>
+        <button type="button" #cancelBtn class="btn btn-outline" (click)="closeModal()">Cancel</button>
+        <button type="submit" #submitBtn class="btn btn-primary" (click)="viewMode == true ? editButtonClicked() : onSubmit(form.value)">{{viewMode == true ? "Edit" : "Save"}}</button>
     </div>
 </clr-modal>
