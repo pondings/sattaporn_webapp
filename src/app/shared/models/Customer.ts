@@ -14,6 +14,7 @@ export class Customer {
     public createBy: string;
     public updateDate: string;
     public updateBy: string;
+    public document1: string;
 
     /**
      * DTO

@@ -2,6 +2,8 @@ import { CustomerService } from './../../shared/services/customer.service';
 import { Customer } from './../../shared/models/Customer';
 import { Component, OnInit, ViewChild, EventEmitter, Output, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { saveAs } from 'file-saver';
+import 'rxjs/Rx';
 
 /**
  * Third-Party
@@ -45,20 +47,39 @@ export class CustomerFormModalComponent implements OnInit {
   }
 
   public onSubmit(form: Customer) {
-    if (form.id !== undefined && form.id !== 0 && form.id !== null) {
-      this.customer.sirName = form.sirName;
-      this.customer.name = form.name;
-      this.customer.lname = form.lname;
-      this.customer.phone = form.phone;
-      this.customer.address = form.address;
-      this.customer.workAddress = form.workAddress;
-      this.customerService.updateCustomer(this.customer).subscribe(
-        rs => this.updatedCustomerEmit(rs, form.index),
-        error => console.log(error)
-      );
-    }else {
-      this.customerService.createCustomer(form).subscribe(rs => this.customerEmit(rs), error => console.log(error));
-    }
+    this.customer = form;
+    return null;
+    // if (form.id !== undefined && form.id !== 0 && form.id !== null) {
+    //   this.customer.sirName = form.sirName;
+    //   this.customer.name = form.name;
+    //   this.customer.lname = form.lname;
+    //   this.customer.phone = form.phone;
+    //   this.customer.address = form.address;
+    //   this.customer.workAddress = form.workAddress;
+    //   this.customerService.updateCustomer(this.customer).subscribe(
+    //     rs => this.updatedCustomerEmit(rs, form.index),
+    //     error => console.log(error)
+    //   );
+    // }else {
+    //   this.customerService.createCustomer(form).subscribe(rs => this.customerEmit(rs), error => console.log(error));
+    // }
+  }
+
+  public fileChange(event) {
+    const fileList: FileList = event.target.files;
+    this.customerService.uploadDocument(this.customer, fileList).subscribe(rs => this.customer = rs, error => console.log(error));
+  }
+
+  public downloadDocument() {
+    this.customerService.downloadDocument(this.customer).subscribe(
+      (res) => {
+        saveAs(res, this.customer.fullName + '-email.pdf');
+      }
+    );
+  }
+
+  private downloadFile(rs) {
+
   }
 
   public customerEmit(customer: any) {
@@ -94,7 +115,7 @@ export class CustomerFormModalComponent implements OnInit {
   public viewCustomerInfo(customer: Customer) {
     this.opened = true;
     this.customerFormModalHeader = 'View Customer Info';
-    this.customer = { ... customer};
+    this.customer = { ...customer };
     this.customer.index = customer.index;
     this.form.patchValue({
       id: customer.id,
