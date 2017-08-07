@@ -36,6 +36,10 @@ export class CustomerSearchComponent implements OnInit {
   }
 
   private resetForm() {
+    this.customerService.findAll().subscribe(
+      (rs) => this.emitResult(rs),
+      (error) => console.log(error)
+    );
     this.form.reset();
   }
 
