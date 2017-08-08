@@ -4,8 +4,8 @@
   </ngx-datatable>
 
   <ng-template #btnGroup let-row="row" let-rowIndex="rowIndex">
+        <button class="btn btn-info" (click)="infoBtnClicked(row,rowIndex)"><clr-icon shape="help-info"></clr-icon></button>
     <button class="btn btn-danger" (click)="removeBtnClicked(row,rowIndex)"><clr-icon shape="trash"></clr-icon></button>
-    <button class="btn btn-info" (click)="infoBtnClicked(row,rowIndex)"><clr-icon shape="help-info"></clr-icon></button>
   </ng-template>
 
   <ng-template #phone let-row="row">
