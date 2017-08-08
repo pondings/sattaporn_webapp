@@ -1,3 +1,9 @@
-<p>
-  document-list-modal works!
-</p>
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
+    <h3 class="modal-title">รายการเอกสาร</h3>
+    <div class="modal-body">
+        <p>ทดสอบ</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-info">Close</button>
+    </div>
+</clr-modal>
