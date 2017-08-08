@@ -6,13 +6,14 @@ import { ConfirmationModalComponent } from './modals/confirmation-modal/confirma
  * Third-Party
  */
 import { ClarityModule } from 'clarity-angular';
+import { DocumentListModalComponent } from './modals/document-list-modal/document-list-modal.component';
 
 @NgModule({
   imports: [
     CommonModule,
     ClarityModule
   ],
-  declarations: [ConfirmationModalComponent],
-  exports: [ConfirmationModalComponent]
+  declarations: [ConfirmationModalComponent, DocumentListModalComponent],
+  exports: [ConfirmationModalComponent, DocumentListModalComponent]
 })
 export class SharedModule { }
