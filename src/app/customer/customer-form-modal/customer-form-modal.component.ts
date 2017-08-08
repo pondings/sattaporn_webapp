@@ -30,11 +30,10 @@ export class CustomerFormModalComponent implements OnInit {
   private opened: boolean;
   private customerFormModalHeader: string;
   private customer: Customer;
-  private uploadStatus: string;
-  private uploadAble: Boolean = true;
+  private transactionStatus: string;
 
   constructor(private fb: FormBuilder, private customerService: CustomerService, private elementRef: ElementRef,
-      private renderer: Renderer) {
+    private renderer: Renderer) {
     this.createForm();
   }
 
@@ -55,6 +54,7 @@ export class CustomerFormModalComponent implements OnInit {
   }
 
   public onSubmit(form: Customer) {
+    this.disableAllButton();
     if (form.id !== undefined && form.id !== 0 && form.id !== null) {
       this.customer.sirName = form.sirName;
       this.customer.name = form.name;
@@ -73,11 +73,11 @@ export class CustomerFormModalComponent implements OnInit {
 
   public fileChange(event) {
     const fileList: FileList = event.target.files;
+    this.transactionStatus = 'uploading..';
     this.disableAllButton();
     this.customerService.uploadDocument(this.customer, fileList).subscribe(
       (rs) => {
-        this.customer.document1 = rs.document1;
-        this.enableAllButton();
+        this.uploadComplete(rs);
       },
       (error) => {
         this.enableAllButton();
@@ -86,11 +86,31 @@ export class CustomerFormModalComponent implements OnInit {
     );
   }
 
+  private uploadComplete(customer: any) {
+    this.transactionStatus = 'Upload complete !';
+    this.customer.document1 = customer.document1;
+    this.enableAllButton();
+    setTimeout(() => {
+      this.transactionStatus = '';
+    }, 5000);
+  }
+
   public downloadDocument() {
+    this.transactionStatus = 'Downloading..';
     this.customerService.downloadDocument(this.customer).subscribe(
       (res) => {
-        saveAs(res, this.customer.fullName + '-email.doc');
+        this.downloadComplete(res) ;
       }
+    );
+  }
+
+  private downloadComplete(res: any) {
+    this.transactionStatus = 'Download complete !';
+    saveAs(res, this.customer.fullName + '-email.doc');
+    setTimeout(
+      () => {
+        this.transactionStatus = '';
+      }, 5000
     );
   }
 
@@ -98,6 +118,7 @@ export class CustomerFormModalComponent implements OnInit {
     this.customerModel.emit(customer);
     this.customer = customer;
     this.enterViewMode();
+    this.enableAllButton();
   }
 
   public updatedCustomerEmit(customer: any, index: number) {
@@ -105,6 +126,7 @@ export class CustomerFormModalComponent implements OnInit {
     updatedCustomer.index = this.customer.index;
     this.updatedCustomer.emit(updatedCustomer);
     this.enterViewMode();
+    this.enableAllButton();
   }
 
   private editButtonClicked() {
@@ -175,7 +197,7 @@ export class CustomerFormModalComponent implements OnInit {
   }
 
   private enableAllButton() {
-    if (this.downloadBtn) {
+    if (this.customer.document1) {
       this.downloadBtn.nativeElement.disabled = false;
     }
     this.uploadBtn.nativeElement.disabled = false;
