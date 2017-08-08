@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,7 +20,8 @@ import { CustomerFormModalComponent } from './customer-form-modal/customer-form-
     CustomerRoutingModule,
     ClarityModule,
     ReactiveFormsModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    SharedModule
   ],
   declarations: [CustomerComponent, CustomerSearchComponent, CustomerTableComponent, CustomerFormModalComponent]
 })
