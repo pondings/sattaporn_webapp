@@ -1,28 +1,23 @@
-<ngx-datatable #dataTable [trackByProp]="'code'" [rows]="rows" [columns]="columns" [columnMode]="'force'" [headerHeight]="40"
-  [footerHeight]="40" [limit]="5" [rowHeight]="'auto'" [reorderable]="true" class="material" [scrollbarH]="true">
-</ngx-datatable>
+<clr-datagrid>
+  <clr-dg-column [clrDgField]="'code'">Code</clr-dg-column>
+  <clr-dg-column [clrDgField]="'fullName'">Name</clr-dg-column>
+  <clr-dg-column [clrDgField]="'phone'">Phone</clr-dg-column>
+  <clr-dg-column [clrDgField]="'address'">Address</clr-dg-column>
+  <clr-dg-column>Command</clr-dg-column>
 
-<ng-template #btnGroup let-row="row" let-rowIndex="rowIndex">
-  <button class="btn btn-primary" (click)="documentBtnClicked(rowIndex)"><clr-icon shape="document"></clr-icon></button>
-  <button class="btn btn-info" (click)="infoBtnClicked(row,rowIndex)"><clr-icon shape="help-info"></clr-icon></button>
-  <button class="btn btn-danger" (click)="removeBtnClicked(row,rowIndex)"><clr-icon shape="trash"></clr-icon></button>
-</ng-template>
+  <clr-dg-row *clrDgItems="let customer of customerList; let i = index">
+    <clr-dg-cell>{{customer.code}}</clr-dg-cell>
+    <clr-dg-cell>{{customer.fullName}}</clr-dg-cell>
+    <clr-dg-cell>{{customer.phone}}</clr-dg-cell>
+    <clr-dg-cell>{{customer.address}}</clr-dg-cell>
+    <clr-dg-cell>
+      <div class="btn-group btn-info">
+        <button class="btn btn-info btn-sm" (click)="infoBtnClicked(customer,i)"><clr-icon shape="help-info" ></clr-icon></button>
+        <button class="btn btn-danger btn-sm" (click)="removeBtnClicked(customer,i)"><clr-icon shape="trash" ></clr-icon></button>
+      </div>
+    </clr-dg-cell>
+  </clr-dg-row>
 
-<ng-template #phone let-row="row">
-  {{row.phone}}
-</ng-template>
-
-<ng-template #code let-row="row">
-  {{row.code}}
-</ng-template>
-
-<ng-template #fullName let-row="row">
-  {{row.fullName}}
-</ng-template>
-
-<ng-template #address let-row="row">
-  {{row.address}}
-</ng-template>
+</clr-datagrid>
 
 <app-confirmation-modal [modalTitle]="'Delete'" [modalBody]="'Are you sure ?'" [confirmBtn]="'Confirm'" [closeBtn]="'Close'"></app-confirmation-modal>
-<app-document-list-modal></app-document-list-modal>
