@@ -71,34 +71,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="form-group row">
-                            <div class="col-md-8 row">
-                                <div class="col-md-4">
-                                    <label>เอกสาร</label>
-                                </div>
-                                <div class="col-md-8 row">
-                                    <div class="col-md-6">
-                                        <button #downloadBtn type="button" [disabled]="customer?.document1 == undefined" class="btn btn-primary btn-sm" (click)="downloadDocument()"><clr-icon size="24" shape="download-cloud"></clr-icon> Download</button>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <button #uploadBtn [disabled]="customer?.id == undefined" (click)="openFileUploader()" type="button" class="btn btn-primary btn-sm"
-                                            title="{{customer?.id == undefined ? 'Please create custoemr first!' : 'Upload Document'}}">
-                                            <clr-icon shape="upload-cloud" size="24"></clr-icon> upload 
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 row">
-                                <div class="col-md-12">
-                                    {{transactionStatus}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </section>
             </form>
-            <input #fileUploader type="file" style="display: none" (change)="fileChange($event)" class="form-control" accept=".pdf,.doc,.docx">
+            <!-- <input #fileUploader type="file" style="display: none" (change)="fileChange($event)" class="form-control" accept=".pdf,.doc,.docx"> -->
         </div>
     </div>
     <div class="modal-footer">
@@ -106,3 +81,5 @@
         <button type="submit" #submitBtn class="btn btn-primary" (click)="viewMode == true ? editButtonClicked() : onSubmit(form.value)">{{viewMode == true ? "Edit" : "Save"}}</button>
     </div>
 </clr-modal>
+
+<app-document-list-modal></app-document-list-modal>
