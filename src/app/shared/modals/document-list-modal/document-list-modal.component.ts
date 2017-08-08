@@ -1,3 +1,4 @@
+import { Customer } from './../../models/Customer';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class DocumentListModalComponent implements OnInit {
 
   public opened: boolean ;
+  private customer: Customer;
 
   constructor() { }
 
@@ -22,4 +24,8 @@ export class DocumentListModalComponent implements OnInit {
     this.opened = false;
   }
 
+  public openDocumentListModalWithCustomerCode(customer: Customer) {
+    this.customer = customer;
+    this.opened = true;
+  }
 }
