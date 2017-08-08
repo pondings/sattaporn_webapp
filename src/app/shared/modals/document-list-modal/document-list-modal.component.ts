@@ -18,7 +18,7 @@ export class DocumentListModalComponent implements OnInit {
     this.opened = true;
   }
 
-  public colseDocumentListModal() {
+  public closeDocumentListModal() {
     this.opened = false;
   }
 
