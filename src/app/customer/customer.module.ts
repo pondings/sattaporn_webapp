@@ -7,12 +7,12 @@ import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerComponent } from './customer.component';
 import { CustomerSearchComponent } from './customer-search/customer-search.component';
 import { CustomerTableComponent } from './customer-table/customer-table.component';
+import { CustomerFormModalComponent } from './customer-form-modal/customer-form-modal.component';
 /**
  * Third-Party
  */
 import { ClarityModule } from 'clarity-angular';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { CustomerFormModalComponent } from './customer-form-modal/customer-form-modal.component';
+
 
 @NgModule({
   imports: [
@@ -20,7 +20,6 @@ import { CustomerFormModalComponent } from './customer-form-modal/customer-form-
     CustomerRoutingModule,
     ClarityModule,
     ReactiveFormsModule,
-    NgxDatatableModule,
     SharedModule
   ],
   declarations: [CustomerComponent, CustomerSearchComponent, CustomerTableComponent, CustomerFormModalComponent]
