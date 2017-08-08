@@ -1,3 +1,4 @@
+import { DocumentModule } from './document/document.module';
 import { CustomerService } from './shared/services/customer.service';
 import { CustomerModule } from './customer/customer.module';
 import { DashboardModule } from './dashboard/dashboard.module';
@@ -27,6 +28,7 @@ import { ClarityModule } from 'clarity-angular';
     SharedModule,
     CoreModule,
     DashboardModule,
+    DocumentModule,
     CustomerModule,
     ClarityModule.forRoot(),
     BrowserAnimationsModule
