@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DocumentListModalComponent implements OnInit {
 
+  public opened: boolean ;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public openDocumentListModal() {
+    this.opened = true;
+  }
+
+  public colseDocumentListModal() {
+    this.opened = false;
   }
 
 }
