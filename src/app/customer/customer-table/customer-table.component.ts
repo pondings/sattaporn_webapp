@@ -1,3 +1,4 @@
+import { DocumentListModalComponent } from './../../shared/modals/document-list-modal/document-list-modal.component';
 import { ConfirmationModalComponent } from './../../shared/modals/confirmation-modal/confirmation-modal.component';
 import { CustomerSearchComponent } from './../customer-search/customer-search.component';
 import { CustomerService } from './../../shared/services/customer.service';
@@ -20,6 +21,7 @@ export class CustomerTableComponent implements OnInit {
   @ViewChild('address') addressTemp: TemplateRef<any>;
   @ViewChild('dataTable') dataTable: DatatableComponent;
   @ViewChild(ConfirmationModalComponent) confirmationModalComponent: ConfirmationModalComponent;
+  @ViewChild(DocumentListModalComponent) documentListModalComponent: DocumentListModalComponent;
   private rows: Customer[] = [];
   private columns;
 
