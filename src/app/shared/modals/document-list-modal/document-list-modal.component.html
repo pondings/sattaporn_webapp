@@ -1,9 +1,9 @@
-<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false" [clrModalSize]="'lg'">
     <h3 class="modal-title">รายการเอกสาร</h3>
     <div class="modal-body">
         <p>ทดสอบ</p>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-info">Close</button>
+        <button type="button" class="btn btn-info" (click)="closeDocumentListModal()">Close</button>
     </div>
 </clr-modal>
