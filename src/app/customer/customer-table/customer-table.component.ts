@@ -36,7 +36,7 @@ export class CustomerTableComponent implements OnInit {
     ];
   }
 
-  private infoBtnClicked(customer: Customer, index: number) {
+  public infoBtnClicked(customer: Customer, index: number) {
     const targetCustomer: Customer = this.rows[index];
     targetCustomer.index = index;
     customer.index = index;
@@ -78,15 +78,15 @@ export class CustomerTableComponent implements OnInit {
     this.customerService.removeCustomer(customer).subscribe(rs => this.spliceTable(index), error => console.log(error));
   }
 
-  private spliceTable(index: number) {
+  public spliceTable(index: number) {
     this.rows.splice(index, 1);
   }
 
-  private fillTable(data: Customer[]) {
+  public fillTable(data: Customer[]) {
     this.rows = data;
   }
 
-  private addRecord(customer: Customer) {
+  public addRecord(customer: Customer) {
     this.rows.unshift(customer);
   }
 
