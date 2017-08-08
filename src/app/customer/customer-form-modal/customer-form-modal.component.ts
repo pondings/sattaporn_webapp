@@ -1,3 +1,4 @@
+import { DocumentListModalComponent } from './../../shared/modals/document-list-modal/document-list-modal.component';
 import { CustomerService } from './../../shared/services/customer.service';
 import { Customer } from './../../shared/models/Customer';
 import { Component, OnInit, ViewChild, EventEmitter, Output, Input, ElementRef, Renderer } from '@angular/core';
@@ -21,8 +22,7 @@ export class CustomerFormModalComponent implements OnInit {
   @ViewChild('customerFormModal') customerformModal: Modal;
   @ViewChild('submitBtn') submitBtn: ElementRef;
   @ViewChild('cancelBtn') cancelBtn: ElementRef;
-  @ViewChild('downloadBtn') downloadBtn: ElementRef;
-  @ViewChild('uploadBtn') uploadBtn: ElementRef;
+  @ViewChild('openDocumemtListBtn') openDocumemtListBtn: ElementRef;
   @Output() customerModel: EventEmitter<Customer> = new EventEmitter();
   @Output() updatedCustomer: EventEmitter<Customer> = new EventEmitter();
   private viewMode: Boolean;
@@ -188,19 +188,13 @@ export class CustomerFormModalComponent implements OnInit {
   }
 
   private disableAllButton() {
-    if (this.downloadBtn) {
-      this.downloadBtn.nativeElement.disabled = true;
-    }
-    this.uploadBtn.nativeElement.disabled = true;
+    this.openDocumemtListBtn.nativeElement.disable = true;
     this.submitBtn.nativeElement.disabled = true;
     this.cancelBtn.nativeElement.disabled = true;
   }
 
   private enableAllButton() {
-    if (this.customer.document1) {
-      this.downloadBtn.nativeElement.disabled = false;
-    }
-    this.uploadBtn.nativeElement.disabled = false;
+    this.openDocumemtListBtn.nativeElement.disable = false;
     this.submitBtn.nativeElement.disabled = false;
     this.cancelBtn.nativeElement.disabled = false;
   }
