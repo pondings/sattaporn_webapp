@@ -38,6 +38,10 @@ export class CustomerTableComponent implements OnInit {
     ];
   }
 
+  public documentBtnClicked() {
+    this.documentListModalComponent.openDocumentListModal();
+  }
+
   public infoBtnClicked(customer: Customer, index: number) {
     const targetCustomer: Customer = this.rows[index];
     targetCustomer.index = index;
