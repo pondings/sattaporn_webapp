@@ -1,0 +1,37 @@
+<div class="col-md-12">
+  <form [formGroup]='form' (submit)="onsubmit(form.value)">
+    <section class="form-block">
+      <div class="form-group row flex-items-md-center">
+        <div class="col-md-4 row">
+          <div class="col-md-4">
+            <label>คำค้นหา</label>
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control" formControlName='searchKeyword'>
+          </div>
+        </div>
+        <div class="col-md-4 row">
+          <div class="col-md-4">
+            <label>ค้นหาจาก</label>
+          </div>
+          <div class="col-md-6">
+            <div class="select form-control">
+              <select formControlName='findMethod'>
+                <option value="fullName">เลขที่เอกสาร</option>
+                <option value="custCode">รหัสลูกค้า</option>
+                <option value="docCode">เลขที่เอกสาร</option>
+                <option value="docDate">วันที่ทำรายการ</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="col-md-12">
+      <div class="row flex-items-md-center">
+        <button [disabled]="form.invalid" type="submit" class="btn btn-primary"><clr-icon shape="search"></clr-icon> Search</button>
+        <button (click)="resetForm()" [disabled]="form.pristine" type="button" class="btn btn-danger"><clr-icon shape="refresh"></clr-icon> Reset</button>
+      </div>
+    </div>
+  </form>
+</div>
