@@ -1,4 +1,3 @@
-import { FormGroup } from '@angular/forms';
 export class Customer {
 
     public id: number;
