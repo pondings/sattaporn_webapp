@@ -18,6 +18,7 @@ import { DocumentSearchFormComponent } from './document-search-form/document-sea
     ClarityModule,
     ReactiveFormsModule
   ],
-  declarations: [DocumentComponent, DocumentSearchFormComponent]
+  declarations: [DocumentComponent, DocumentSearchFormComponent],
+  exports: [DocumentSearchFormComponent]
 })
 export class DocumentModule { }
