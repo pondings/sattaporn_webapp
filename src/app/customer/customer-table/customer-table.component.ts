@@ -1,3 +1,4 @@
+import { DocumentModalComponent } from './../../shared/modals/document-modal/document-modal.component';
 import { ConfirmationModalComponent } from './../../shared/modals/confirmation-modal/confirmation-modal.component';
 import { CustomerSearchComponent } from './../customer-search/customer-search.component';
 import { CustomerService } from './../../shared/services/customer.service';
@@ -13,6 +14,7 @@ export class CustomerTableComponent implements OnInit {
 
   @Output() viewCustomerInfo: EventEmitter<Customer> = new EventEmitter();
   @ViewChild(ConfirmationModalComponent) confirmationModalComponent: ConfirmationModalComponent;
+  @ViewChild(DocumentModalComponent) documentModalComponent: DocumentModalComponent;
   private customerList: Customer[] = [];
   private columns;
 
@@ -20,6 +22,10 @@ export class CustomerTableComponent implements OnInit {
 
   ngOnInit() {
     this.findAll();
+  }
+
+  public documentBtnClicked(index: number) {
+    this.documentModalComponent.openModalWithcustomer(this.customerList[index]);
   }
 
   public infoBtnClicked(customer: Customer, index: number) {
