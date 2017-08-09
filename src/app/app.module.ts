@@ -1,3 +1,4 @@
+import { DocumentService } from './shared/services/document.service';
 import { DocumentModule } from './document/document.module';
 import { CustomerService } from './shared/services/customer.service';
 import { CustomerModule } from './customer/customer.module';
@@ -33,7 +34,7 @@ import { ClarityModule } from 'clarity-angular';
     ClarityModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [CustomerService],
+  providers: [CustomerService, DocumentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
