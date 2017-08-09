@@ -12,6 +12,7 @@
     <clr-dg-cell>{{customer.address}}</clr-dg-cell>
     <clr-dg-cell>
       <div class="btn-group btn-info">
+        <button (click)="documentBtnClicked(i)" type="button" class="btn btn-primary btn-sm"><clr-icon shape="document" ></clr-icon></button>
         <button class="btn btn-info btn-sm" (click)="infoBtnClicked(customer,i)"><clr-icon shape="help-info" ></clr-icon></button>
         <button class="btn btn-danger btn-sm" (click)="removeBtnClicked(customer,i)"><clr-icon shape="trash" ></clr-icon></button>
       </div>
@@ -21,3 +22,5 @@
 </clr-datagrid>
 
 <app-confirmation-modal [modalTitle]="'Delete'" [modalBody]="'Are you sure ?'" [confirmBtn]="'Confirm'" [closeBtn]="'Close'"></app-confirmation-modal>
+
+<app-document-modal></app-document-modal>
