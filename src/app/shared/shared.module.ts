@@ -1,3 +1,4 @@
+import { DocumentModule } from './../document/document.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConfirmationModalComponent } from './modals/confirmation-modal/confirmation-modal.component';
@@ -11,7 +12,8 @@ import { DocumentModalComponent } from './modals/document-modal/document-modal.c
 @NgModule({
   imports: [
     CommonModule,
-    ClarityModule
+    ClarityModule,
+    DocumentModule
   ],
   declarations: [ConfirmationModalComponent, DocumentTableComponent, DocumentModalComponent],
   exports: [ConfirmationModalComponent, DocumentModalComponent]
