@@ -1,9 +1,11 @@
-<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
-    <h3 class="modal-title">TEST</h3>
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false" [clrModalSize]="'lg'">
+    <h3 class="modal-title">{{customer?.fullName}} : Document</h3>
     <div class="modal-body">
-        <p></p>
+        <app-document-table></app-document-table>
+         <input #fileUploader type="file" style="display: none" (change)="fileChange($event)" class="form-control" accept=".doc,.docx"> 
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default">Close</button>
+        <button (click)="openFileUploader()" type="button" class="btn btn-primary"><clr-icon shape="upload-cloud" size='24'></clr-icon> Upload file</button>
+        <button (click)="closeModal()" type="button" class="btn btn-default">Close</button>
     </div>
 </clr-modal>
