@@ -1,4 +1,3 @@
-import { DocumentListModalComponent } from './../../shared/modals/document-list-modal/document-list-modal.component';
 import { CustomerService } from './../../shared/services/customer.service';
 import { Customer } from './../../shared/models/Customer';
 import { Component, OnInit, ViewChild, EventEmitter, Output, Input, ElementRef, Renderer } from '@angular/core';
