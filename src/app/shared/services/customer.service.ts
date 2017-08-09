@@ -12,56 +12,46 @@ import { environment } from '../../../environments/environment';
 export class CustomerService {
 
   protected url: string = environment.api;
-  private localUrl = this.url + 'customer/';
+  private customerUrl = this.url + 'customer/';
 
   constructor(protected http: Http) { }
 
   public downloadDocument(customer: Customer): any {
-    return this.http.get(this.localUrl + 'downloadDocument/' + customer.code, { responseType: ResponseContentType.Blob }).map(
+    return this.http.get(this.customerUrl + 'downloadDocument/' + customer.code, { responseType: ResponseContentType.Blob }).map(
       (res) => {
         return new Blob([res.blob()], { type: 'application/word' });
       }
     );
   }
 
-  public uploadDocument(customer: Customer, fileList: FileList): Observable<Customer> {
-    const formData: FormData = new FormData();
-    const file: File = fileList[0];
-    formData.append('file', file, file.name);
-    formData.append('code', customer.code);
-    const headers = new Headers();
-    const options = new RequestOptions({ headers: headers });
-
-    return this.http.post(this.localUrl + 'uploadDocument', formData, options).map(this.extractData).catch(this.handlerError);
-  }
 
   public updateCustomer(customer: Customer): Observable<Customer> {
     const options = this.getOptions();
     const body = JSON.stringify(customer);
-    return this.http.put(this.localUrl + 'update', body, options).map(this.extractData).catch(this.handlerError);
+    return this.http.put(this.customerUrl + 'update', body, options).map(this.extractData).catch(this.handlerError);
   }
 
   public createCustomer(customer: Customer): Observable<Customer> {
     const options = this.getOptions();
     const body = JSON.stringify(customer);
-    return this.http.post(this.localUrl + 'create', body, options).map(this.extractData).catch(this.handlerError);
+    return this.http.post(this.customerUrl + 'create', body, options).map(this.extractData).catch(this.handlerError);
   }
 
   public removeCustomer(customer: Customer): Observable<Boolean> {
     const options = this.getOptions();
     const id = customer.id;
-    return this.http.delete(this.localUrl + 'remove/' + id, options).map(function () { return true; }).catch(this.handlerError);
+    return this.http.delete(this.customerUrl + 'remove/' + id, options).map(function () { return true; }).catch(this.handlerError);
   }
 
   public findCustomer(customer: Customer): Observable<[Customer[]]> {
     const options = this.getOptions();
     const body = JSON.stringify(customer);
-    return this.http.post(this.localUrl + 'find', body, options).map(this.extractData).catch(this.handlerError);
+    return this.http.post(this.customerUrl + 'find', body, options).map(this.extractData).catch(this.handlerError);
   }
 
   public findAll() {
     const options = this.getOptions();
-    return this.http.get(this.localUrl + 'showAll', options).map(this.extractData).catch(this.handlerError);
+    return this.http.get(this.customerUrl + 'showAll', options).map(this.extractData).catch(this.handlerError);
   }
 
   protected getOptions(): RequestOptions {
