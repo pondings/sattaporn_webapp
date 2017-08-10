@@ -70,20 +70,20 @@ export class CustomerFormModalComponent implements OnInit {
     }
   }
 
-  public fileChange(event) {
-    const fileList: FileList = event.target.files;
-    this.transactionStatus = 'uploading..';
-    this.disableAllButton();
-    this.customerService.uploadDocument(this.customer, fileList).subscribe(
-      (rs) => {
-        this.uploadComplete(rs);
-      },
-      (error) => {
-        this.enableAllButton();
-        alert('Can not upload file pls contract Pawarut Klaiarmon');
-      }
-    );
-  }
+  // public fileChange(event) {
+  //   const fileList: FileList = event.target.files;
+  //   this.transactionStatus = 'uploading..';
+  //   this.disableAllButton();
+  //   this.customerService.uploadDocument(this.customer, fileList).subscribe(
+  //     (rs) => {
+  //       this.uploadComplete(rs);
+  //     },
+  //     (error) => {
+  //       this.enableAllButton();
+  //       alert('Can not upload file pls contract Pawarut Klaiarmon');
+  //     }
+  //   );
+  // }
 
   private uploadComplete(customer: any) {
     this.transactionStatus = 'Upload complete !';

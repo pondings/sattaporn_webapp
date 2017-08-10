@@ -1,3 +1,4 @@
+import { Document } from './../../models/Document';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,6 +11,10 @@ export class DocumentTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public addRow(document: Document) {
+    console.log(document);
   }
 
 }

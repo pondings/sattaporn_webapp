@@ -15,9 +15,9 @@ export class DocumentService extends CustomerService {
 
   public uploadDocument(document: Document, fileList: FileList): Observable<Document> {
     const formData: FormData = new FormData();
-    const file: File = fileList[0];
-    console.log(file.name);
+    const file: File = fileList[0];;
     formData.append('file', file, file.name);
+    formData.append('custId', document.customer.id.toString());
     const headers = new Headers();
     const options = new RequestOptions({ headers: headers });
     return this.http.post(this.documentUrl + 'uploadDocument', formData, options).map(this.extractData).catch(this.handlerError);
