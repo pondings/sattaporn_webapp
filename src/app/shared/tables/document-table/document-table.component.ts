@@ -19,14 +19,13 @@ export class DocumentTableComponent implements OnInit {
 
   public downloadFile(document: Document) {
     this.documentService.downloadDocument(document).subscribe(
-      res => this.downloadComplete(res),
+      res => this.downloadComplete(res, document.name),
       error => console.log(error)
     );
   }
 
-  private downloadComplete(res: any) {
-    console.log(res.name);
-    saveAs(res, res.name);
+  private downloadComplete(res: any, fileName: string) {
+    saveAs(res, fileName);
   }
 
   public addRow(document: Document) {
