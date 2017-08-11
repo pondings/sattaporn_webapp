@@ -1,5 +1,7 @@
+import { DocumentService } from './../../services/document.service';
 import { Document } from './../../models/Document';
 import { Component, OnInit } from '@angular/core';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-document-table',
@@ -10,9 +12,21 @@ export class DocumentTableComponent implements OnInit {
 
   public documentList = [];
 
-  constructor() { }
+  constructor(private documentService: DocumentService) { }
 
   ngOnInit() {
+  }
+
+  public downloadFile(document: Document) {
+    this.documentService.downloadDocument(document).subscribe(
+      res => this.downloadComplete(res),
+      error => console.log(error)
+    );
+  }
+
+  private downloadComplete(res: any) {
+    console.log(res.name);
+    saveAs(res, res.name);
   }
 
   public addRow(document: Document) {
