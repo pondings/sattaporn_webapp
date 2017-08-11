@@ -14,7 +14,7 @@ import { environment } from '../../../environments/environment';
 export class DocumentService {
 
   protected url: string = environment.api;
-  private documentUrl = this.url + 'ducmentation/';
+  private documentUrl = this.url + 'documentation/';
 
   constructor(protected http: Http) { }
 
