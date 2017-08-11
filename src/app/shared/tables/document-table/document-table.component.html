@@ -9,7 +9,7 @@
     <clr-dg-cell>{{document.code}}</clr-dg-cell>
     <clr-dg-cell>{{document.name}}</clr-dg-cell>
     <clr-dg-cell>{{document.type}}</clr-dg-cell>
-    <clr-dg-cell>{{document.createDate}}</clr-dg-cell>
+    <clr-dg-cell>{{document.createDate | date: 'dd/MM/yyyy'}}</clr-dg-cell>
     <clr-dg-cell>
       <div class="btn-group btn-info">
         <button (click)="downloadFile(document)" type="button" class="btn btn-primary btn-sm"><clr-icon shape="download-cloud" size="18"></clr-icon></button>   
