@@ -36,10 +36,8 @@ export class DocumentService {
     return this.http.post(this.documentUrl + 'uploadDocument', formData, options).map(this.extractData).catch(this.handlerError);
   }
 
-  public findDocument(customer: Customer): Observable<Document> {
+  public findDocument(document: Document): Observable<Document> {
     const options = this.getOptions();
-    const document: Document = new Document();
-    document.customer = customer;
     const body = JSON.stringify(document);
     return this.http.post(this.documentUrl + 'find', body, options).map(this.extractData).catch(this.handlerError);
   }
