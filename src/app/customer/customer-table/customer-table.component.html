@@ -1,26 +1,28 @@
 <clr-datagrid>
-  <clr-dg-column [clrDgField]="'code'">Code</clr-dg-column>
-  <clr-dg-column [clrDgField]="'fullName'">Name</clr-dg-column>
-  <clr-dg-column [clrDgField]="'phone'">Phone</clr-dg-column>
-  <clr-dg-column [clrDgField]="'address'">Address</clr-dg-column>
-  <clr-dg-column>Command</clr-dg-column>
+  <clr-dg-column [clrDgField]="'code'">{{'Code' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgField]="'fullName'">{{'Name' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgField]="'phone'">{{'Phone' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgField]="'address'">{{'Address' | translate}}</clr-dg-column>
+  <clr-dg-column>{{'Command' | translate}}</clr-dg-column>
 
   <clr-dg-row *clrDgItems="let customer of customerList; let i = index">
     <clr-dg-cell>{{customer.code}}</clr-dg-cell>
     <clr-dg-cell>{{customer.fullName}}</clr-dg-cell>
     <clr-dg-cell>{{customer.phone}}</clr-dg-cell>
     <clr-dg-cell>{{customer.address}}</clr-dg-cell>
-    <clr-dg-cell>
+    <clr-dg-cell [style.text-align]="'center'">
       <div class="btn-group btn-info">
-        <button (click)="documentBtnClicked(i)" type="button" class="btn btn-primary btn-sm"><clr-icon shape="document" ></clr-icon></button>
-        <button class="btn btn-info btn-sm" (click)="infoBtnClicked(customer,i)"><clr-icon shape="help-info" ></clr-icon></button>
-        <button class="btn btn-danger btn-sm" (click)="removeBtnClicked(customer,i)"><clr-icon shape="trash" ></clr-icon></button>
+        <button (click)="documentBtnClicked(i)" type="button" class="btn btn-primary"><clr-icon shape="document" ></clr-icon></button>
+        <button class="btn btn-info" (click)="infoBtnClicked(customer,i)"><clr-icon shape="help-info" ></clr-icon></button>
+        <button class="btn btn-danger" (click)="removeBtnClicked(customer,i)"><clr-icon shape="trash" ></clr-icon></button>
       </div>
     </clr-dg-cell>
   </clr-dg-row>
-
+  <clr-dg-footer>
+    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} {{'Of' | translate}} {{pagination.totalItems}} {{'Customer' | translate}}
+    <clr-dg-pagination #pagination [clrDgPageSize]="5"></clr-dg-pagination>
+  </clr-dg-footer>
 </clr-datagrid>
 
 <app-confirmation-modal [modalTitle]="'Delete'" [modalBody]="'Are you sure ?'" [confirmBtn]="'Confirm'" [closeBtn]="'Close'"></app-confirmation-modal>
-
 <app-document-modal></app-document-modal>

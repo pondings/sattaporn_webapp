@@ -1,7 +1,7 @@
 <div class="clr-example">
     <clr-tabs>
         <clr-tab>
-            <button clrTabLink>Customer</button>
+            <button clrTabLink>{{'Customer' | translate}}</button>
             <clr-tab-content clrTabContentId="content1" *clrIfActive="true">
                 <app-customer-search (searchResult)="customerTable.fillTable($event)"></app-customer-search>
             </clr-tab-content>
@@ -9,7 +9,7 @@
     </clr-tabs>
     <div style="margin-top: 5vh"></div>
     <div class="col-12 text-right prevent-top">
-        <button type="button" class="btn btn-warning" (click)="addBtnClicked()"><clr-icon shape="plus"></clr-icon> Add new</button>
+        <button type="button" class="btn btn-warning" (click)="addBtnClicked()"><clr-icon shape="plus"></clr-icon> {{'Add' | translate}}</button>
     </div>
     <app-customer-table #customerTable (viewCustomerInfo)="viewCustomerInfo($event)"></app-customer-table>
 </div>

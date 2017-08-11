@@ -9,6 +9,7 @@ import 'rxjs/Rx';
  * Third-Party
  */
 import { Modal } from 'clarity-angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-customer-form-modal',
@@ -32,7 +33,7 @@ export class CustomerFormModalComponent implements OnInit {
   private transactionStatus: string;
 
   constructor(private fb: FormBuilder, private customerService: CustomerService, private elementRef: ElementRef,
-    private renderer: Renderer) {
+    private renderer: Renderer, private translate: TranslateService) {
     this.createForm();
   }
 
@@ -70,49 +71,6 @@ export class CustomerFormModalComponent implements OnInit {
     }
   }
 
-  // public fileChange(event) {
-  //   const fileList: FileList = event.target.files;
-  //   this.transactionStatus = 'uploading..';
-  //   this.disableAllButton();
-  //   this.customerService.uploadDocument(this.customer, fileList).subscribe(
-  //     (rs) => {
-  //       this.uploadComplete(rs);
-  //     },
-  //     (error) => {
-  //       this.enableAllButton();
-  //       alert('Can not upload file pls contract Pawarut Klaiarmon');
-  //     }
-  //   );
-  // }
-
-  private uploadComplete(customer: any) {
-    this.transactionStatus = 'Upload complete !';
-    this.customer.document1 = customer.document1;
-    this.enableAllButton();
-    setTimeout(() => {
-      this.transactionStatus = '';
-    }, 5000);
-  }
-
-  public downloadDocument() {
-    this.transactionStatus = 'Downloading..';
-    this.customerService.downloadDocument(this.customer).subscribe(
-      (res) => {
-        this.downloadComplete(res) ;
-      }
-    );
-  }
-
-  private downloadComplete(res: any) {
-    this.transactionStatus = 'Download complete !';
-    saveAs(res, this.customer.fullName + '-email.doc');
-    setTimeout(
-      () => {
-        this.transactionStatus = '';
-      }, 5000
-    );
-  }
-
   public customerEmit(customer: any) {
     this.customerModel.emit(customer);
     this.customer = customer;
@@ -127,7 +85,6 @@ export class CustomerFormModalComponent implements OnInit {
     this.updatedCustomer.emit(updatedCustomer);
     this.enterViewMode();
     this.enableAllButton();
-    this.closeModal();
   }
 
   private editButtonClicked() {
@@ -141,13 +98,13 @@ export class CustomerFormModalComponent implements OnInit {
 
   public createCustomer() {
     this.opened = true;
-    this.customerFormModalHeader = 'Create Customer';
+    this.customerFormModalHeader = 'CreateCustomer';
     this.enterCreateMode();
   }
 
   public viewCustomerInfo(customer: Customer) {
     this.opened = true;
-    this.customerFormModalHeader = 'View Customer Info';
+    this.customerFormModalHeader = 'ViewCustomerInfo';
     this.setCustomer(customer);
     this.enterViewMode();
   }

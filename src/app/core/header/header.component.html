@@ -3,13 +3,15 @@
          <img src="/assets/sat_logo.png" height="50px" width="75px" > 
     </div>
     <div class="header-nav">
-        <a routerLink="/dashboard" class="active nav-link nav-text">Dashboard</a>
-        <a routerLink="/customer" class="nav-link nav-text">Customer</a>
-        <a routerLink="/document" class="nav-link nav-text">Document</a>
+        <a routerLink="/dashboard" class="active nav-link nav-text">{{'Dashboard' | translate}}</a>
+        <a routerLink="/customer" class="nav-link nav-text">{{'Customer' | translate}}</a>
+        <a routerLink="/document" class="nav-link nav-text">{{'Document' | translate}}</a>
     </div>
     <div class="header-actions">
-        <a href="javascript://" class="nav-link nav-icon">
+        <a (click)="openSettingModal()" class="nav-link nav-icon">
             <clr-icon shape="cog"></clr-icon>
         </a>
     </div>
 </header>
+
+<app-setting-modal></app-setting-modal>

@@ -39,8 +39,7 @@ export class CustomerService {
 
   public removeCustomer(customer: Customer): Observable<Boolean> {
     const options = this.getOptions();
-    const body = JSON.stringify(customer);
-    return this.http.post(this.customerUrl + 'remove', body, options).map(function () { return true; }).catch(this.handlerError);
+    return this.http.delete(this.customerUrl + 'remove/' + customer.id, options).map(function () { return true; }).catch(this.handlerError);
   }
 
   public findCustomer(customer: Customer): Observable<[Customer[]]> {

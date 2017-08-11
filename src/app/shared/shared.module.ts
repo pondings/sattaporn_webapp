@@ -8,14 +8,17 @@ import { DocumentTableComponent } from './tables/document-table/document-table.c
  */
 import { ClarityModule } from 'clarity-angular';
 import { DocumentModalComponent } from './modals/document-modal/document-modal.component';
+import { SettingModalComponent } from './modals/setting-modal/setting-modal.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
     CommonModule,
     ClarityModule,
-    DocumentModule
+    DocumentModule,
+    TranslateModule
   ],
-  declarations: [ConfirmationModalComponent, DocumentTableComponent, DocumentModalComponent],
-  exports: [ConfirmationModalComponent, DocumentModalComponent]
+  declarations: [ConfirmationModalComponent, DocumentTableComponent, DocumentModalComponent, SettingModalComponent],
+  exports: [ConfirmationModalComponent, DocumentModalComponent, SettingModalComponent]
 })
 export class SharedModule { }

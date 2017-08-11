@@ -1,7 +1,13 @@
+import { ConfirmationModalComponent } from './../../modals/confirmation-modal/confirmation-modal.component';
 import { DocumentService } from './../../services/document.service';
 import { Document } from './../../models/Document';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { saveAs } from 'file-saver';
+
+/**
+ * Third-Party
+ */
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-document-table',
@@ -10,11 +16,30 @@ import { saveAs } from 'file-saver';
 })
 export class DocumentTableComponent implements OnInit {
 
+  @ViewChild(ConfirmationModalComponent) confirmationModalComponent: ConfirmationModalComponent;
   public documentList = [];
 
-  constructor(private documentService: DocumentService) { }
+  constructor(private documentService: DocumentService, private translate: TranslateService) { }
 
   ngOnInit() {
+  }
+
+  public removeFile(document: Document, index: number) {
+    this.confirmationModalComponent.openConfirmationModal();
+    this.confirmationModalComponent.result.subscribe(
+      (result) => {
+        if (result === true) {
+          this.documentService.removeDocument(document).subscribe(
+            (res) => this.spliceTable(index),
+            (error) => console.log(error)
+          );
+        }
+      }
+    );
+  }
+
+  public spliceTable(index: number) {
+    this.documentList.splice(index, 1);
   }
 
   public downloadFile(document: Document) {

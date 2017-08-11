@@ -1,5 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+/**
+ * Third-Party
+ */
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-confirmation-modal',
   templateUrl: './confirmation-modal.component.html',
@@ -12,9 +17,11 @@ export class ConfirmationModalComponent implements OnInit {
   @Input() confirmBtn: string;
   @Input() closeBtn: string;
   @Output() result: EventEmitter<boolean> = new EventEmitter();
+  @Output() indexAt: EventEmitter<number> = new EventEmitter();
+
   public opened: boolean;
 
-  constructor() { }
+  constructor(private translate: TranslateService) { }
 
   ngOnInit() {
   }
@@ -22,6 +29,7 @@ export class ConfirmationModalComponent implements OnInit {
   public confirmBtnClicked() {
     this.result.emit(true);
     this.opened = false;
+    this.result = new EventEmitter();
   }
 
   public closeBtnClicked() {

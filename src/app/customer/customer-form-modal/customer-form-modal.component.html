@@ -1,5 +1,5 @@
 <clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false" [clrModalStaticBackdrop]="true" [clrModalSize]="'lg'" #customerFormModal>
-    <h3 class="modal-title">{{customerFormModalHeader}}</h3>
+    <h3 class="modal-title">{{customerFormModalHeader | translate}}</h3>
     <div class="modal-body">
         <div class="col-md-12">
             <form [formGroup]='form'>
@@ -8,21 +8,23 @@
                         <div class="form-group row">
                             <div class="col-md-4 row">
                                 <div class="col-md-6">
-                                    <label>คำนำหน้า </label>
+                                    <label>{{'Title' | translate}} </label>
                                 </div>
                                 <div class="col-md-6 pull-left">
-                                    <select formControlName='sirName'>
-                                        <option value="นาย">นาย</option>
-                                        <option value="นาง">นาง</option>
-                                        <option value="นางสาว">นางสาว</option>
-                                        <option value="Mr.">Mr.</option>
-                                        <option value="Ms.">Ms.</option>
-                                    </select>
+                                    <div class="select form-control">
+                                        <select formControlName='sirName'>
+                                            <option value="นาย">นาย</option>
+                                            <option value="นาง">นาง</option>
+                                            <option value="นางสาว">นางสาว</option>
+                                            <option value="Mr.">Mr.</option>
+                                            <option value="Ms.">Ms.</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-4 row">
                                 <div class="col-md-2">
-                                    <label>ชื่อ </label>
+                                    <label>{{'Name' | translate}} </label>
                                 </div>
                                 <div class="col-md-10 ">
                                     <input type="text" class="form-control" formControlName='name'>
@@ -30,7 +32,7 @@
                             </div>
                             <div class="col-md-4 row">
                                 <div class="col-md-4">
-                                    <label>นามสกุล </label>
+                                    <label>{{'Surname' | translate}} </label>
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" formControlName='lname'>
@@ -43,7 +45,7 @@
                         <div class="form-group row">
                             <div class="col-md-6 row">
                                 <div class="col-md-4">
-                                    <label>เบอร์โทรศัพ์ </label>
+                                    <label>{{'Phone' | translate}} </label>
                                 </div>
                                 <div class="col-md-8 ">
                                     <input maxlength="10" type="text" max="10" class="form-control" formControlName='phone'>
@@ -51,7 +53,7 @@
                             </div>
                             <div class="col-md-6 row">
                                 <div class="col-md-4">
-                                    <label>ที่อยู่ปัจจุบัน </label>
+                                    <label>{{'Address' | translate}} </label>
                                 </div>
                                 <div class="col-md-8">
                                     <textarea class="form-control" formControlName='address'></textarea>
@@ -63,7 +65,7 @@
                         <div class="form-group row">
                             <div class="col-md-6 row">
                                 <div class="col-md-4">
-                                    <label>ที่อยู่ที่ทำงาน </label>
+                                    <label>{{'WorkAddress' | translate}} </label>
                                 </div>
                                 <div class="col-md-8 ">
                                     <textarea class="form-control" formControlName='workAddress'></textarea>
@@ -73,12 +75,10 @@
                     </div>
                 </section>
             </form>
-            <!-- <input #fileUploader type="file" style="display: none" (change)="fileChange($event)" class="form-control" accept=".pdf,.doc,.docx"> -->
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" #cancelBtn class="btn btn-outline" (click)="closeModal()">Cancel</button>
-        <button type="submit" #submitBtn class="btn btn-primary" (click)="viewMode == true ? editButtonClicked() : onSubmit(form.value)">{{viewMode == true ? "Edit" : "Save"}}</button>
+        <button type="button" #cancelBtn class="btn btn-outline" (click)="closeModal()">{{'Cancel' | translate}}</button>
+        <button type="submit" #submitBtn class="btn btn-primary" (click)="viewMode == true ? editButtonClicked() : onSubmit(form.value)">{{viewMode == true ? ('Edit' | translate) : ('Save' | translate)}}</button>
     </div>
 </clr-modal>
-

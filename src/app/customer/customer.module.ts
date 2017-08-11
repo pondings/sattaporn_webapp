@@ -12,6 +12,7 @@ import { CustomerFormModalComponent } from './customer-form-modal/customer-form-
  * Third-Party
  */
 import { ClarityModule } from 'clarity-angular';
+import { TranslateModule} from '@ngx-translate/core';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ClarityModule } from 'clarity-angular';
     CustomerRoutingModule,
     ClarityModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    TranslateModule,
   ],
   declarations: [CustomerComponent, CustomerSearchComponent, CustomerTableComponent, CustomerFormModalComponent]
 })

@@ -4,6 +4,11 @@ import { DocumentService } from './../../services/document.service';
 import { Customer } from './../../models/Customer';
 import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 
+/**
+ * Third-Party
+ */
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-document-modal',
   templateUrl: './document-modal.component.html',
@@ -19,7 +24,7 @@ export class DocumentModalComponent implements OnInit {
   public opened: boolean;
   public customer: Customer;
 
-  constructor(private documentService: DocumentService) { }
+  constructor(private documentService: DocumentService, private translate: TranslateService) { }
 
   ngOnInit() {
   }

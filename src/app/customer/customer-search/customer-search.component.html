@@ -1,11 +1,11 @@
-<h3>Customer Management</h3>
+<h3>{{'CustomerManagement' | translate}}</h3>
 <div class="col-md-12">
   <form [formGroup]='form' (submit)="onSubmit(form.value)">
     <section class="form-block">
       <div class="form-group row flex-items-md-center">
         <div class="col-md-4 row">
           <div class="col-md-4">
-            <label>คำค้นหา : </label>
+            <label>{{'Keyword' | translate}} : </label>
           </div>
           <div class="col-md-6">
             <input type="text" class="form-control" formControlName='searchKeyword'>
@@ -13,17 +13,17 @@
         </div>
         <div class="col-md-4 row">
           <div class="col-md-4">
-            <label>ค้นหาจาก : </label>
+            <label>{{'FindBy' | translate}} : </label>
           </div>
           <div class="col-md-8">
             <div class="col-md-12">
                 <div class="select form-control">
                     <select formControlName='findMethod'>
-                        <option value="fullName">ชื่อลูกค้า</option>
-                        <option value="code">รหัสลูกค้า</option>
-                        <option value="address">ที่อยู่</option>
-                        <option value="workAddress">ที่อยู่ที่ทำงาน</option>
-                        <option value="phone">เบอร์โทรศัพท์</option>
+                        <option value="fullName">{{'Name' | translate}}</option>
+                        <option value="code">{{'Code' | translate}}</option>
+                        <option value="address">{{'Address' | translate}}</option>
+                        <option value="workAddress">{{'WorkAddress' | translate}}</option>
+                        <option value="phone">{{'Phone' | translate}}</option>
                     </select>
                 </div>
             </div>
@@ -33,8 +33,8 @@
     </section>
     <div class="col-md-12">
       <div class="row flex-items-md-center">
-        <button type="submit" class="btn btn-primary" [disabled]="form.invalid"><clr-icon shape="search"></clr-icon> Search</button>
-        <button type="button" class="btn btn-danger" [disabled]="form.pristine" (click)="resetForm()"><clr-icon shape="refresh"></clr-icon> Reset</button>
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid"><clr-icon shape="search"></clr-icon> {{'Search' | translate}}</button>
+        <button type="button" class="btn btn-danger" [disabled]="form.pristine" (click)="resetForm()"><clr-icon shape="refresh"></clr-icon> {{'Reset' | translate}}</button>
       </div>
     </div>
   </form>

@@ -18,6 +18,12 @@ export class DocumentService {
 
   constructor(protected http: Http) { }
 
+  public removeDocument(document: Document): Observable<Boolean> {
+    const options = this.getOptions();
+    const id = document.id;
+    return this.http.delete(this.documentUrl + 'remove/' + id, options).map(function () { return true; }).catch(this.handlerError);
+  }
+
   public downloadDocument(document: Document): any {
     return this.http.get(this.documentUrl + 'downloadDocument/' + document.code, { responseType: ResponseContentType.Blob }).map(
       (res) => {

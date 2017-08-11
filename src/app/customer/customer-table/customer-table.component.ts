@@ -5,6 +5,12 @@ import { CustomerService } from './../../shared/services/customer.service';
 import { Customer } from './../../shared/models/Customer';
 import { Component, OnInit, ViewChild, TemplateRef, EventEmitter, Output } from '@angular/core';
 
+/**
+ * Third-Party
+ */
+import { TranslateService } from '@ngx-translate/core';
+
+
 @Component({
   selector: 'app-customer-table',
   templateUrl: './customer-table.component.html',
@@ -18,7 +24,7 @@ export class CustomerTableComponent implements OnInit {
   private customerList: Customer[] = [];
   private columns;
 
-  constructor(private customerService: CustomerService) { }
+  constructor(private customerService: CustomerService, private translate: TranslateService) { }
 
   ngOnInit() {
     this.findAll();

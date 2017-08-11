@@ -1,10 +1,10 @@
 <clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
-    <h3 class="modal-title">{{modalTitle}}</h3>
+    <h3 class="modal-title">{{modalTitle | translate}}</h3>
     <div class="modal-body">
-        <p>{{modalBody}}</p>
+        <p>{{modalBody | translate}}</p>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-info" (click)="closeBtnClicked()">{{closeBtn}}</button>
-        <button type="button" class="btn btn-danger" (click)="confirmBtnClicked()">{{confirmBtn}}</button>
+        <button type="button" class="btn btn-info" (click)="closeBtnClicked()">{{closeBtn | translate}}</button>
+        <button type="button" class="btn btn-danger" (click)="confirmBtnClicked()">{{confirmBtn | translate}}</button>
     </div>
 </clr-modal>

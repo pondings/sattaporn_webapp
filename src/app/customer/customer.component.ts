@@ -6,6 +6,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
  * Third-Party
  */
 import { Tabs } from 'clarity-angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-customer',
@@ -16,7 +17,7 @@ export class CustomerComponent implements OnInit {
 
   @ViewChild(CustomerFormModalComponent) customerFormModal: CustomerFormModalComponent;
 
-  constructor() { }
+  constructor(private translate: TranslateService) { }
 
   ngOnInit() {
   }
