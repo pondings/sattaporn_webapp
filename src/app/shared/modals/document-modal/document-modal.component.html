@@ -2,7 +2,7 @@
     <h3 class="modal-title">{{customer?.fullName}} : Document</h3>
     <div class="modal-body">
         <app-document-table #documentTable></app-document-table>
-         <input #fileUploader type="file" style="display: none" (change)="fileChange($event)" class="form-control" accept=".doc,.docx,.xls,.jpg,.jpeg,.png"> 
+        <input #fileUploader type="file" style="display: none" (change)="fileChange($event)" class="form-control" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*">
     </div>
     <div class="modal-footer">
         <button #uploadBtn (click)="openFileUploader()" type="button" class="btn btn-primary"><clr-icon shape="upload-cloud" size='24'></clr-icon> Upload file</button>
