@@ -18,6 +18,14 @@ export class DocumentService {
 
   constructor(protected http: Http) { }
 
+  public downloadDocument(document: Document): any {
+    return this.http.get(this.documentUrl + 'downloadDocument/' + document.code, { responseType: ResponseContentType.Blob }).map(
+      (res) => {
+        return new Blob([res.blob()], { type: document.type });
+      }
+    );
+  }
+
   public uploadDocument(document: Document, fileList: FileList): Observable<Document> {
     const formData: FormData = new FormData();
     const file: File = fileList[0];
