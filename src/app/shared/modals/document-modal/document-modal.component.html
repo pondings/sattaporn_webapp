@@ -5,6 +5,7 @@
         <input #fileUploader type="file" style="display: none" (change)="fileChange($event)" class="form-control" accept="application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,text/plain, application/pdf, image/*,.xlsx,.xls">
     </div>
     <div class="modal-footer">
+        {{transactionStatus}}
         <button #uploadBtn (click)="openFileUploader()" type="button" class="btn btn-primary"><clr-icon shape="upload-cloud" size='24'></clr-icon> {{'UploadFile' | translate}}</button>
         <button #closeBtn (click)="closeModal()" type="button" class="btn btn-default">{{'Close' | translate}}</button>
     </div>
