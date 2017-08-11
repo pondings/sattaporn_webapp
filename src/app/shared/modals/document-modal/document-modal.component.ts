@@ -53,8 +53,8 @@ export class DocumentModalComponent implements OnInit {
     this.fileUploader.nativeElement.value = '';
   }
 
-  private findDocument(customer: Customer) {
-    this.documentService.findDocument(customer).subscribe(
+  private findDocument(document: Document) {
+    this.documentService.findDocument(document).subscribe(
       (res) => this.documentTable.fillTable(res),
       (error) => console.log(error)
     );
@@ -77,7 +77,10 @@ export class DocumentModalComponent implements OnInit {
   public openModalWithcustomer(customer: Customer) {
     this.opened = true;
     this.customer = customer;
-    this.findDocument(customer);
+    const document: Document = new Document();
+    document.findMethod = 'custCode';
+    document.searchKeyword = customer.code;
+    this.findDocument(document);
   }
 
   public closeModal() {
