@@ -53,6 +53,13 @@ export class DocumentModalComponent implements OnInit {
     this.fileUploader.nativeElement.value = '';
   }
 
+  private findDocument(customer: Customer) {
+    this.documentService.findDocument(customer).subscribe(
+      (res) => this.documentTable.fillTable(res),
+      (error) => console.log(error)
+    );
+  }
+
   private disableForm() {
     this.uploadBtn.nativeElement.disable = true;
     this.closeBtn.nativeElement.disable = true;
@@ -70,6 +77,7 @@ export class DocumentModalComponent implements OnInit {
   public openModalWithcustomer(customer: Customer) {
     this.opened = true;
     this.customer = customer;
+    this.findDocument(customer);
   }
 
   public closeModal() {

@@ -8,13 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DocumentTableComponent implements OnInit {
 
+  public documentList = [];
+
   constructor() { }
 
   ngOnInit() {
   }
 
   public addRow(document: Document) {
-    console.log(document);
+    this.documentList.unshift(document);
+  }
+
+  public fillTable(documentList: any) {
+    this.documentList = documentList;
+    console.log(documentList);
   }
 
 }
