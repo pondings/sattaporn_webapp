@@ -1,0 +1,14 @@
+{
+    "CustomerManagement": "Customer Management",
+    "FindBy": "Find by",
+    "Add": "Add New",
+    "CreateCustomer": "Create Customer",
+    "WorkAddress": "Work Address",
+    "ViewCustomerInfo": "View Customer Info",
+    "FileName": "File Name",
+    "CreateDate": "Create Date",
+    "UploadFile": "Upload File",
+    "CurrentLanguage": "Current Language",
+    "RemoveFileTitle": "Do you want to remove this file ?",
+    "RemoveFileBody": "If you sure please press confirm"
+}
