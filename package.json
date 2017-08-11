@@ -22,6 +22,8 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "@ngx-translate/core": "^7.0.0",
+    "@ngx-translate/http-loader": "^0.1.0",
     "@swimlane/ngx-datatable": "^10.0.1",
     "@webcomponents/custom-elements": "^1.0.0-alpha.3",
     "clarity-angular": "^0.10.0-rc.1",
