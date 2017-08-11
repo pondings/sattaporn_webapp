@@ -12,7 +12,7 @@
     <clr-dg-cell>{{document.createDate}}</clr-dg-cell>
     <clr-dg-cell>
       <div class="btn-group btn-info">
-        <button type="button" class="btn btn-primary btn-sm"><clr-icon shape="download-cloud" size="18"></clr-icon></button>   
+        <button (click)="downloadFile(document)" type="button" class="btn btn-primary btn-sm"><clr-icon shape="download-cloud" size="18"></clr-icon></button>   
         <button class="btn btn-danger btn-sm"><clr-icon shape="trash" size="18"></clr-icon></button>
       </div>
     </clr-dg-cell>
