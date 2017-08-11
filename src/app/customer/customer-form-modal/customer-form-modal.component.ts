@@ -118,6 +118,7 @@ export class CustomerFormModalComponent implements OnInit {
     this.customer = customer;
     this.enterViewMode();
     this.enableAllButton();
+    this.closeModal();
   }
 
   public updatedCustomerEmit(customer: any, index: number) {
@@ -126,6 +127,7 @@ export class CustomerFormModalComponent implements OnInit {
     this.updatedCustomer.emit(updatedCustomer);
     this.enterViewMode();
     this.enableAllButton();
+    this.closeModal();
   }
 
   private editButtonClicked() {
@@ -187,13 +189,11 @@ export class CustomerFormModalComponent implements OnInit {
   }
 
   private disableAllButton() {
-    this.openDocumemtListBtn.nativeElement.disable = true;
     this.submitBtn.nativeElement.disabled = true;
     this.cancelBtn.nativeElement.disabled = true;
   }
 
   private enableAllButton() {
-    this.openDocumemtListBtn.nativeElement.disable = false;
     this.submitBtn.nativeElement.disabled = false;
     this.cancelBtn.nativeElement.disabled = false;
   }
