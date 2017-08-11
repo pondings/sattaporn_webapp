@@ -1,0 +1,23 @@
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
+    <h3 class="modal-title">{{'Setting' | translate}}</h3>
+    <div class="modal-body">
+        <section class="form-block">
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <label>{{'CurrentLanguage' | translate}} :</label>
+                </div>
+                <div class="col-md-6">
+                    <div class="select form-control">
+                        <select (change)="setCurrentLanguage($event)">
+                            <option value="en">English</option>
+                            <option value="th">ภาษาไทย</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-info" (click)="closeBtnClicked()">{{'Close' | translate}}</button>
+    </div>
+</clr-modal>
