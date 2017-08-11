@@ -23,6 +23,7 @@ export class DocumentModalComponent implements OnInit {
   @Output() uploadedDocument: EventEmitter<Document> = new EventEmitter();
   public opened: boolean;
   public customer: Customer;
+  public transactionStatus: string;
 
   constructor(private documentService: DocumentService, private translate: TranslateService) { }
 
@@ -38,6 +39,7 @@ export class DocumentModalComponent implements OnInit {
     const document: Document = new Document();
     this.disableForm();
     document.customer = this.customer;
+    this.transactionStatus = 'Uploading..';
     this.documentService.uploadDocument(document, fileList).subscribe(
       (rs) => {
         this.uploadSuccess(rs);
@@ -49,6 +51,8 @@ export class DocumentModalComponent implements OnInit {
   private uploadError(error: any) {
     console.log(error);
     this.fileUploader.nativeElement.value = '';
+    this.transactionStatus = 'Content type not support !';
+    this.setTransactionStatusTimeOut();
     this.enableForm();
   }
 
@@ -56,6 +60,14 @@ export class DocumentModalComponent implements OnInit {
     this.enableForm();
     this.documentTable.addRow(document);
     this.fileUploader.nativeElement.value = '';
+    this.transactionStatus = 'Upload Success !';
+    this.setTransactionStatusTimeOut();
+  }
+
+  private setTransactionStatusTimeOut() {
+    setTimeout(() => {
+      this.transactionStatus = '';
+    }, 5000);
   }
 
   private findDocument(document: Document) {
@@ -66,13 +78,13 @@ export class DocumentModalComponent implements OnInit {
   }
 
   private disableForm() {
-    this.uploadBtn.nativeElement.disable = true;
-    this.closeBtn.nativeElement.disable = true;
+    this.uploadBtn.nativeElement.disabled = true;
+    this.closeBtn.nativeElement.disabled = true;
   }
 
   private enableForm() {
-    this.uploadBtn.nativeElement.disable = false;
-    this.closeBtn.nativeElement.disable = false;
+    this.uploadBtn.nativeElement.disabled = false;
+    this.closeBtn.nativeElement.disabled = false;
   }
 
   public openModal() {
