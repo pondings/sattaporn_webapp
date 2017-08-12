@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Injectable()
-export class CustomerValidation {
+export class CustomValidation {
 
   constructor() { }
 
