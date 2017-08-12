@@ -51,7 +51,6 @@ export class CustomerTableComponent implements OnInit {
     updatedCustomer.code = customer.code;
     updatedCustomer.phone = customer.phone;
     updatedCustomer.address = customer.address;
-    updatedCustomer.document1 = customer.document1;
     updatedCustomer = customer;
     this.customerList[customer.index] = updatedCustomer;
   }
