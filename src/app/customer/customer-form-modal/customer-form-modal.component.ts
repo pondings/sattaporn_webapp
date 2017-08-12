@@ -1,3 +1,4 @@
+import { CustomerValidation } from './../../shared/services/validation.service';
 import { CustomerService } from './../../shared/services/customer.service';
 import { Customer } from './../../shared/models/Customer';
 import { Component, OnInit, ViewChild, EventEmitter, Output, Input, ElementRef, Renderer } from '@angular/core';
@@ -44,13 +45,13 @@ export class CustomerFormModalComponent implements OnInit {
     this.form = this.fb.group({
       id: undefined,
       code: '',
-      title: '',
-      name: '',
-      lname: '',
-      phone: ['', [Validators.maxLength(10)]],
-      address: '',
+      title: ['', Validators.required],
+      name: ['', Validators.required],
+      lname: ['', Validators.required],
+      phone: ['', [Validators.maxLength(10), Validators.required]],
+      address: ['', Validators.required],
       workAddress: '',
-      email: ''
+      email: ['', [Validators.required, CustomerValidation.emailValidator]]
     });
   }
 
@@ -127,6 +128,7 @@ export class CustomerFormModalComponent implements OnInit {
       phone: customer.phone,
       address: customer.address,
       workAddress: customer.workAddress,
+      email: customer.email,
       index: customer.index
     });
   }
