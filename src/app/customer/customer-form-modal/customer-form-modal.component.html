@@ -12,7 +12,7 @@
                                 </div>
                                 <div class="col-md-6 pull-left">
                                     <div class="select form-control">
-                                        <select formControlName='sirName'>
+                                        <select formControlName='title'>
                                             <option value="นาย">นาย</option>
                                             <option value="นาง">นาง</option>
                                             <option value="นางสาว">นางสาว</option>
@@ -40,7 +40,7 @@
                             </div>
                         </div>
                     </div>
-                    <div style="margin-top: 5vh"></div>
+                    <!-- <div style="margin-top: 5vh"></div> -->
                     <div class="col-md-12">
                         <div class="form-group row">
                             <div class="col-md-6 row">
@@ -53,16 +53,24 @@
                             </div>
                             <div class="col-md-6 row">
                                 <div class="col-md-4">
-                                    <label>{{'Address' | translate}} </label>
+                                    <label>{{'Email' | translate}} </label>
                                 </div>
-                                <div class="col-md-8">
-                                    <textarea class="form-control" formControlName='address'></textarea>
+                                <div class="col-md-8 ">
+                                    <input type="text" max="10" class="form-control" formControlName='email'>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group row">
+                            <div class="col-md-6 row">
+                                <div class="col-md-4">
+                                    <label>{{'Address' | translate}} </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <textarea class="form-control" formControlName='address'></textarea>
+                                </div>
+                            </div>
                             <div class="col-md-6 row">
                                 <div class="col-md-4">
                                     <label>{{'WorkAddress' | translate}} </label>
