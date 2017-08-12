@@ -29,10 +29,8 @@
                                     </label>
                                 </div>
                                 <div class="col-md-10">
-                                    <label for="name" aria-haspopup="true" role="tooltip" 
-                                    class="tooltip tooltip-validation tooltip-md" 
-                                    [class.invalid]="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)">
-                                       <input id="name" type="text" class="form-control" formControlName='name' appValidation>
+                                    <label for="name" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)">
+                                       <input appValidation id="name" type="text" class="form-control" formControlName='name'>
                                     </label>
                                 </div>
                             </div>
@@ -41,7 +39,9 @@
                                     <label>{{'Surname' | translate}} </label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" formControlName='lname'>
+                                    <label for="lname" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="form.controls['lname'].invalid && (form.controls['lname'].dirty || form.controls['lname'].touched)">
+                                       <input appValidation id="lname" type="text" class="form-control" formControlName='lname'>
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +54,9 @@
                                     <label>{{'Phone' | translate}} </label>
                                 </div>
                                 <div class="col-md-8 ">
-                                    <input maxlength="10" type="text" max="10" class="form-control" formControlName='phone'>
+                                    <label for="phone" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="form.controls['phone'].invalid && (form.controls['phone'].dirty || form.controls['phone'].touched)">
+                                       <input appValidation id="phone" type="text" class="form-control" formControlName='phone'>
+                                    </label>
                                 </div>
                             </div>
                             <div class="col-md-6 row">
@@ -62,7 +64,9 @@
                                     <label>{{'Email' | translate}} </label>
                                 </div>
                                 <div class="col-md-8 ">
-                                    <input type="text" max="10" class="form-control" formControlName='email'>
+                                    <label for="email" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)">
+                                       <input appValidation id="email" type="text" class="form-control" formControlName='email'>
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -74,7 +78,7 @@
                                     <label>{{'Address' | translate}} </label>
                                 </div>
                                 <div class="col-md-8">
-                                    <textarea class="form-control" formControlName='address'></textarea>
+                                    <textarea appValidation id="address" type="text" class="form-control" formControlName='address'></textarea>
                                 </div>
                             </div>
                             <div class="col-md-6 row">
@@ -92,6 +96,7 @@
         </div>
     </div>
     <div class="modal-footer">
+        <button type="button" class="btn btn-info" (click)="resetForm()"><clr-icon shape="refresh"></clr-icon> {{'Reset' | translate}}</button>
         <button type="button" #cancelBtn class="btn btn-outline" (click)="closeModal()">{{'Cancel' | translate}}</button>
         <button type="submit" #submitBtn class="btn btn-primary" [disabled]="form.invalid" (click)="viewMode == true ? editButtonClicked() : onSubmit(form.value)">
             {{viewMode == true ? ('Edit' | translate) : ('Save' | translate)}}
