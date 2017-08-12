@@ -24,10 +24,16 @@
                             </div>
                             <div class="col-md-4 row">
                                 <div class="col-md-2">
-                                    <label>{{'Name' | translate}} </label>
+                                    <label class="tooltip tooltip-validation tooltip-md">
+                                        {{'Name' | translate}}
+                                    </label>
                                 </div>
-                                <div class="col-md-10 ">
-                                    <input type="text" class="form-control" formControlName='name'>
+                                <div class="col-md-10">
+                                    <label for="name" aria-haspopup="true" role="tooltip" 
+                                    class="tooltip tooltip-validation tooltip-md" 
+                                    [class.invalid]="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)">
+                                       <input id="name" type="text" class="form-control" formControlName='name' appValidation>
+                                    </label>
                                 </div>
                             </div>
                             <div class="col-md-4 row">
@@ -87,6 +93,8 @@
     </div>
     <div class="modal-footer">
         <button type="button" #cancelBtn class="btn btn-outline" (click)="closeModal()">{{'Cancel' | translate}}</button>
-        <button type="submit" #submitBtn class="btn btn-primary" (click)="viewMode == true ? editButtonClicked() : onSubmit(form.value)">{{viewMode == true ? ('Edit' | translate) : ('Save' | translate)}}</button>
+        <button type="submit" #submitBtn class="btn btn-primary" [disabled]="form.invalid" (click)="viewMode == true ? editButtonClicked() : onSubmit(form.value)">
+            {{viewMode == true ? ('Edit' | translate) : ('Save' | translate)}}
+        </button>
     </div>
 </clr-modal>
