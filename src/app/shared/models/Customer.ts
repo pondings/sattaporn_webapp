@@ -4,7 +4,7 @@ export class Customer {
     public code: string;
     public name: string;
     public lname: string;
-    public sirName: string;
+    public title: string;
     public fullName: string;
     public address: string;
     public workAddress: string;
@@ -13,7 +13,7 @@ export class Customer {
     public createBy: string;
     public updateDate: string;
     public updateBy: string;
-    public document1: string;
+    public email: string;
 
     /**
      * DTO
