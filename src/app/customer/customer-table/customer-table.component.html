@@ -2,14 +2,14 @@
   <clr-dg-column [clrDgField]="'code'">{{'Code' | translate}}</clr-dg-column>
   <clr-dg-column [clrDgField]="'fullName'">{{'Name' | translate}}</clr-dg-column>
   <clr-dg-column [clrDgField]="'phone'">{{'Phone' | translate}}</clr-dg-column>
-  <clr-dg-column [clrDgField]="'address'">{{'Address' | translate}}</clr-dg-column>
+  <clr-dg-column [clrDgField]="'email'">{{'Email' | translate}}</clr-dg-column>
   <clr-dg-column>{{'Command' | translate}}</clr-dg-column>
 
   <clr-dg-row *clrDgItems="let customer of customerList; let i = index">
     <clr-dg-cell>{{customer.code}}</clr-dg-cell>
     <clr-dg-cell>{{customer.fullName}}</clr-dg-cell>
     <clr-dg-cell>{{customer.phone}}</clr-dg-cell>
-    <clr-dg-cell>{{customer.address}}</clr-dg-cell>
+    <clr-dg-cell>{{customer.email}}</clr-dg-cell>
     <clr-dg-cell [style.text-align]="'center'">
       <div class="btn-group btn-info">
         <button (click)="documentBtnClicked(i)" type="button" class="btn btn-primary"><clr-icon shape="document" ></clr-icon></button>
