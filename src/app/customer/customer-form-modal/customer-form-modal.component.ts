@@ -1,4 +1,4 @@
-import { CustomerValidation } from './../../shared/services/validation.service';
+import { CustomerValidation } from './../../shared/services/custom-validation.service';
 import { CustomerService } from './../../shared/services/customer.service';
 import { Customer } from './../../shared/models/Customer';
 import { Component, OnInit, ViewChild, EventEmitter, Output, Input, ElementRef, Renderer } from '@angular/core';
