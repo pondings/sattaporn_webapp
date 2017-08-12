@@ -1,4 +1,5 @@
-import { CustomerValidation } from './../../shared/services/custom-validation.service';
+import { CustomValidation } from './../../shared/services/custom-validation.service';
+
 import { CustomerService } from './../../shared/services/customer.service';
 import { Customer } from './../../shared/models/Customer';
 import { Component, OnInit, ViewChild, EventEmitter, Output, Input, ElementRef, Renderer } from '@angular/core';
@@ -32,6 +33,7 @@ export class CustomerFormModalComponent implements OnInit {
   private customerFormModalHeader: string;
   private customer: Customer;
   private transactionStatus: string;
+  private customerBackup: Customer;
 
   constructor(private fb: FormBuilder, private customerService: CustomerService, private elementRef: ElementRef,
     private renderer: Renderer, private translate: TranslateService) {
@@ -48,10 +50,10 @@ export class CustomerFormModalComponent implements OnInit {
       title: ['', Validators.required],
       name: ['', Validators.required],
       lname: ['', Validators.required],
-      phone: ['', [Validators.maxLength(10), Validators.required]],
+      phone: ['', [Validators.required]],
       address: ['', Validators.required],
       workAddress: '',
-      email: ['', [Validators.required, CustomerValidation.emailValidator]]
+      email: ['', [Validators.required, CustomValidation.emailValidator]]
     });
   }
 
@@ -119,6 +121,7 @@ export class CustomerFormModalComponent implements OnInit {
 
   private setCustomer(customer: Customer) {
     this.customer = { ...customer };
+    this.customerBackup = { ...customer };
     this.customer.index = customer.index;
     this.form.patchValue({
       id: customer.id,
@@ -144,6 +147,7 @@ export class CustomerFormModalComponent implements OnInit {
   }
 
   private enterCreateMode() {
+    this.customerBackup = null;
     this.customer = null;
     this.viewMode = false;
     this.form.enable();
@@ -163,6 +167,25 @@ export class CustomerFormModalComponent implements OnInit {
     this.form.reset();
     this.viewMode = true;
     this.opened = false;
+  }
+
+  public resetForm() {
+    const customer = this.customerBackup;
+    if (customer === null) {
+      this.form.reset();
+      return ;
+    }
+    this.form.patchValue({
+      id: customer.id === undefined ? undefined : customer.id,
+      title: customer.title,
+      name: customer.name,
+      lname: customer.lname,
+      phone: customer.phone,
+      address: customer.address,
+      workAddress: customer.workAddress,
+      email: customer.email,
+      index: customer.index
+    });
   }
 
 }
