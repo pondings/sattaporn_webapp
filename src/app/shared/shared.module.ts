@@ -10,6 +10,7 @@ import { ClarityModule } from 'clarity-angular';
 import { DocumentModalComponent } from './modals/document-modal/document-modal.component';
 import { SettingModalComponent } from './modals/setting-modal/setting-modal.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { ValidationDirective } from './directives/validation.directive';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
     DocumentModule,
     TranslateModule
   ],
-  declarations: [ConfirmationModalComponent, DocumentTableComponent, DocumentModalComponent, SettingModalComponent],
-  exports: [ConfirmationModalComponent, DocumentModalComponent, SettingModalComponent]
+  declarations: [ConfirmationModalComponent, DocumentTableComponent, DocumentModalComponent, SettingModalComponent, ValidationDirective],
+  exports: [ConfirmationModalComponent, DocumentModalComponent, SettingModalComponent, ValidationDirective]
 })
 export class SharedModule { }
