@@ -44,24 +44,26 @@ export class CustomerFormModalComponent implements OnInit {
     this.form = this.fb.group({
       id: undefined,
       code: '',
-      sirName: [{ value: '', disabled: this.viewMode }],
-      name: [{ value: '', disabled: this.viewMode }],
-      lname: [{ value: '', disabled: this.viewMode }],
-      phone: [{ value: '', disabled: this.viewMode }, [Validators.maxLength(10)]],
-      address: [{ value: '', disabled: this.viewMode }],
-      workAddress: [{ value: '', disabled: this.viewMode }]
+      title: '',
+      name: '',
+      lname: '',
+      phone: ['', [Validators.maxLength(10)]],
+      address: '',
+      workAddress: '',
+      email: ''
     });
   }
 
   public onSubmit(form: Customer) {
     this.disableAllButton();
     if (form.id !== undefined && form.id !== 0 && form.id !== null) {
-      this.customer.sirName = form.sirName;
+      this.customer.title = form.title;
       this.customer.name = form.name;
       this.customer.lname = form.lname;
       this.customer.phone = form.phone;
       this.customer.address = form.address;
       this.customer.workAddress = form.workAddress;
+      this.customer.email = form.email;
       this.customerService.updateCustomer(this.customer).subscribe(
         rs => this.updatedCustomerEmit(rs, this.customer.index),
         error => console.log(error)
@@ -119,7 +121,7 @@ export class CustomerFormModalComponent implements OnInit {
     this.customer.index = customer.index;
     this.form.patchValue({
       id: customer.id,
-      sirName: customer.sirName,
+      title: customer.title,
       name: customer.name,
       lname: customer.lname,
       phone: customer.phone,
