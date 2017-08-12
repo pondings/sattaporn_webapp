@@ -94,6 +94,7 @@ export class DocumentModalComponent implements OnInit {
   public openModalWithcustomer(customer: Customer) {
     this.opened = true;
     this.customer = customer;
+    this.documentTable.removeAllRecord();
     const document: Document = new Document();
     document.findMethod = 'custCode';
     document.searchKeyword = customer.code;

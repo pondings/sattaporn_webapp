@@ -62,4 +62,8 @@ export class DocumentTableComponent implements OnInit {
     console.log(documentList);
   }
 
+  public removeAllRecord() {
+    this.documentList = [];
+  }
+
 }
