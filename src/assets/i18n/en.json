@@ -10,5 +10,9 @@
     "UploadFile": "Upload File",
     "CurrentLanguage": "Current Language",
     "RemoveFileTitle": "Do you want to remove this file ?",
-    "RemoveFileBody": "If you sure please press confirm"
+    "RemoveFileBody": "If you sure please press confirm",
+    "Validation": {
+        "required": "Requier this field !",
+        "invalidEmail": "Email has wrong format."
+    }
 }

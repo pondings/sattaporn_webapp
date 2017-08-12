@@ -31,6 +31,10 @@
     "Setting": "ตั้งค่า",
     "RemoveFileTitle": "คุณต้องการลบไฟล์นี้ ?",
     "RemoveFileBody": "หากคุณแน่ใจกดตกลง",
-    "Confirm": "ตกลง"
+    "Confirm": "ตกลง",
+    "Validation": {
+        "required": "กรุณากรอกข้อมูล",
+        "invalidEmail": "รูปแบบ Email ไม่ถูกต้อง"
+    }
     
 }
