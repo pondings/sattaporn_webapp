@@ -52,8 +52,9 @@ export class CustomerService {
     const customer: Customer = new Customer();
     customer.findMethod = 'fullName';
     customer.searchKeyword = '';
+    const body = JSON.stringify(customer);
     const options = this.getOptions();
-    return this.http.post(this.customerUrl + 'find', options).map(this.extractData).catch(this.handlerError);
+    return this.http.post(this.customerUrl + 'find', body, options).map(this.extractData).catch(this.handlerError);
   }
 
   protected getOptions(): RequestOptions {
