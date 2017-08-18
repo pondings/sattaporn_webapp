@@ -49,8 +49,11 @@ export class CustomerService {
   }
 
   public findAll() {
+    const customer: Customer = new Customer();
+    customer.findMethod = 'fullName';
+    customer.searchKeyword = '';
     const options = this.getOptions();
-    return this.http.get(this.customerUrl + 'showAll', options).map(this.extractData).catch(this.handlerError);
+    return this.http.post(this.customerUrl + 'find', options).map(this.extractData).catch(this.handlerError);
   }
 
   protected getOptions(): RequestOptions {
