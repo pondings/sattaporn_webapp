@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  api: 'https://satapi.pondingz.com/'
+  api: 'http://localhost:8080/'
 };
