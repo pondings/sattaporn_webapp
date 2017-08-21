@@ -8,8 +8,12 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { saveAs } from 'file-saver';
 
+import { environment } from '../../../environments/environment';
+
 @Injectable()
 export class CommonService {
+
+  protected url: string = environment.api;
 
   constructor(protected http: Http) { }
 
