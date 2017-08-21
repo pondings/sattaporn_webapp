@@ -24,14 +24,12 @@
                             </div>
                             <div class="col-md-4 row">
                                 <div class="col-md-2">
-                                    <label class="tooltip tooltip-validation tooltip-md">
+                                    <label>
                                         {{'Name' | translate}}
                                     </label>
                                 </div>
                                 <div class="col-md-10">
-                                    <label for="name" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)">
-                                       <input appValidation id="name" type="text" class="form-control" formControlName='name'>
-                                    </label>
+                                    <input [tooltipPos]="'bottom-right'" appValidation id="name" type="text" class="form-control" formControlName='name'>
                                 </div>
                             </div>
                             <div class="col-md-4 row">
@@ -39,9 +37,7 @@
                                     <label>{{'Surname' | translate}} </label>
                                 </div>
                                 <div class="col-md-8">
-                                    <label for="lname" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="form.controls['lname'].invalid && (form.controls['lname'].dirty || form.controls['lname'].touched)">
-                                       <input appValidation id="lname" type="text" class="form-control" formControlName='lname'>
-                                    </label>
+                                    <input [tooltipPos]="'bottom-left'" appValidation id="lname" type="text" class="form-control" formControlName='lname'>
                                 </div>
                             </div>
                         </div>
@@ -54,9 +50,7 @@
                                     <label>{{'Phone' | translate}} </label>
                                 </div>
                                 <div class="col-md-8 ">
-                                    <label for="phone" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="form.controls['phone'].invalid && (form.controls['phone'].dirty || form.controls['phone'].touched)">
-                                       <input appValidation id="phone" type="text" class="form-control" formControlName='phone'>
-                                    </label>
+                                    <input appValidation id="phone" type="text" class="form-control" formControlName='phone'>
                                 </div>
                             </div>
                             <div class="col-md-6 row">
@@ -64,9 +58,7 @@
                                     <label>{{'Email' | translate}} </label>
                                 </div>
                                 <div class="col-md-8 ">
-                                    <label for="email" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)">
-                                       <input appValidation id="email" type="text" class="form-control" formControlName='email'>
-                                    </label>
+                                    <input [tooltipPos]="'top-left'" appValidation id="email" type="text" class="form-control" formControlName='email'>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +70,7 @@
                                     <label>{{'Address' | translate}} </label>
                                 </div>
                                 <div class="col-md-8">
-                                    <textarea appValidation id="address" type="text" class="form-control" formControlName='address'></textarea>
+                                    <textarea id="address" type="text" class="form-control" formControlName='address'></textarea>
                                 </div>
                             </div>
                             <div class="col-md-6 row">
