@@ -6,7 +6,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerComponent } from './customer.component';
 import { CustomerSearchComponent } from './customer-search/customer-search.component';
-import { CustomerTableComponent } from './customer-table/customer-table.component';
 import { CustomerFormModalComponent } from './customer-form-modal/customer-form-modal.component';
 /**
  * Third-Party
@@ -24,6 +23,6 @@ import { TranslateModule} from '@ngx-translate/core';
     SharedModule,
     TranslateModule,
   ],
-  declarations: [CustomerComponent, CustomerSearchComponent, CustomerTableComponent, CustomerFormModalComponent]
+  declarations: [CustomerComponent, CustomerSearchComponent, CustomerFormModalComponent]
 })
 export class CustomerModule { }
