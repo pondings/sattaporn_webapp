@@ -1,4 +1,4 @@
-import { CustomValidation } from './../services/custom-validation.service';
+import { CustomValidation } from './custom-validation';
 import { Directive, ElementRef, Renderer, HostListener, DoCheck, Input, AfterViewInit } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
