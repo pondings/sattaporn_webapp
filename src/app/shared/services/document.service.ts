@@ -1,4 +1,3 @@
-import { CommonService } from './common.service';
 import { CustomerService } from './customer.service';
 import { Document } from './../models/Document';
 import { Customer } from './../models/Customer';

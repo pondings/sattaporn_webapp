@@ -1,4 +1,3 @@
-import { CommonService } from './common.service';
 import { Customer } from './../models/Customer';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
