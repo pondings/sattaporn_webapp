@@ -28,7 +28,7 @@ export class CustomerSearchComponent implements OnInit {
   createForm() {
     this.form = this.fb.group({
       searchKeyword: '',
-      findMethod: ['', Validators.required]
+      findMethod: ['fullName', Validators.required]
     });
   }
 
@@ -43,6 +43,7 @@ export class CustomerSearchComponent implements OnInit {
   private resetForm() {
     this.customerService.findAll();
     this.form.reset();
+    this.form.controls.findMethod.setValue('fullName');
   }
 
 
