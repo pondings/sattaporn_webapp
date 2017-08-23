@@ -20,7 +20,7 @@ export class DocumentModalComponent implements OnInit {
   @ViewChild('fileUploader') fileUploader: ElementRef;
   @ViewChild('closeBtn') closeBtn: ElementRef;
   @ViewChild('uploadBtn') uploadBtn: ElementRef;
-  @Output() uploadedDocument: EventEmitter<Document> = new EventEmitter();
+
   public opened: boolean;
   public customer: Customer;
   public transactionStatus: string;
