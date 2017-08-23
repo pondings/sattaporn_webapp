@@ -9,7 +9,7 @@
     </clr-tabs>
     <div style="margin-top: 5vh"></div>
     <div class="col-12 text-right prevent-top">
-        <button type="button" class="btn btn-warning" (click)="addBtnClicked()"><clr-icon shape="plus"></clr-icon> {{'Add' | translate}}</button>
+        <button type="button" class="btn btn-primary" (click)="addBtnClicked()"><clr-icon shape="plus"></clr-icon> {{'Add' | translate}}</button>
     </div>
     <app-customer-table #customerTable (viewCustomerInfo)="viewCustomerInfo($event)"></app-customer-table>
 </div>
