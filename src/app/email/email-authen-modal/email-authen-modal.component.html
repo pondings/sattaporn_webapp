@@ -1,0 +1,29 @@
+<clr-modal [(clrModalOpen)]="opened">
+    <h3 class="modal-title">Authenication for gmail</h3>
+    <div class="modal-body">
+        <form [formGroup]='form'>
+            <section class="form-block">
+                <div class="form-group row flex-items-md-around col-md-12">
+                  <div class="col-md-1 col-sm-12 col-xs-12">
+                    <label>Username </label>
+                  </div>
+                  <div class="col-md-6 col-sm-12 col-xs-12">
+                    <input type="text" class='form-control' formControlName='username'>
+                  </div>
+                </div>
+                <div class="form-group row flex-items-md-around col-md-12">
+                  <div class="col-md-1 col-sm-12 col-xs-12">
+                    <label>Password </label>
+                  </div>
+                  <div class="col-md-6 col-sm-12 col-xs-12">
+                    <input type="password" class='form-control' formControlName='password'>
+                  </div>
+                </div>
+            </section>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="closeModal()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="onsubmit(form.value)" [disabled]='form.invalid'>Ok</button>
+    </div>
+</clr-modal>
