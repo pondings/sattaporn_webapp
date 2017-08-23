@@ -1,5 +1,8 @@
-<p>
-  email works!
-</p>
-<input type="file" value="Test" multiple (change)="addFile($event)">
-<button type="button" (click)='onsubmit()'>Submit</button>
+<clr-tabs>
+  <clr-tab>
+      <button clrTabLink>Email</button>
+      <clr-tab-content clrTabContentId="content1" *clrIfActive="true">
+        <app-email-form></app-email-form>
+      </clr-tab-content>
+  </clr-tab>
+</clr-tabs>

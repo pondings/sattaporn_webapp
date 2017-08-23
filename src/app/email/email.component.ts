@@ -1,32 +1,14 @@
-import { Email } from './../shared/models/Email';
-import { EmailService } from './../shared/services/email.service';
 import { Component, OnInit } from '@angular/core';
+
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-email',
   templateUrl: './email.component.html',
   styleUrls: ['./email.component.scss']
 })
-export class EmailComponent implements OnInit {
+export class EmailComponent {
 
-  public email: Email;
-  public fileList: FileList;
 
-  constructor(private emailService: EmailService) { }
-
-  ngOnInit() {
-    this.email = new Email();
-  }
-
-  public addFile(event) {
-    const fileList = event.target.files;
-    this.fileList = fileList;
-  }
-
-  public onsubmit() {
-    this.emailService.sendEmail(this.email, this.fileList).subscribe(
-      (res) => console.log(res)
-    );
-  }
 
 }
