@@ -8,9 +8,9 @@ import { NgControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 
 @Directive({
-  selector: 'input[appValidation]'
+  selector: 'input[appValidator]'
 })
-export class ValidationDirective implements DoCheck, AfterViewInit {
+export class ValidatorDirective implements DoCheck, AfterViewInit {
 
   @Input() showErrorMessage = true;
   @Input() isDisabled = false;
