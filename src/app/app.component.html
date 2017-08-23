@@ -1,10 +1,10 @@
-<div class="main-container">
+<clr-main-container>
     <app-header></app-header>
     <div class="content-container">
         <div class="content-area">
             <router-outlet></router-outlet>
         </div>
-        <clr-vertical-nav [clrVerticalNavCollapsible]="true">
+        <clr-vertical-nav [clrVerticalNavCollapsible]="true" #verticalNav>
                 <clr-vertical-nav-group
                         routerLinkActive="active">
                     <a clrVerticalNavLink
@@ -77,4 +77,4 @@
                 </a>
             </clr-vertical-nav>
     </div>
-</div>
+</clr-main-container>
