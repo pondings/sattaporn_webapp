@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -15,6 +16,7 @@ import { EmailAuthenModalComponent } from './email-authen-modal/email-authen-mod
     CommonModule,
     ReactiveFormsModule,
     EmailRoutingModule,
+    SharedModule,
     ClarityModule,
     TranslateModule
   ],
