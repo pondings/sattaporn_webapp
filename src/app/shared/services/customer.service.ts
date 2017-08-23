@@ -1,53 +1,45 @@
 import { CommonService } from './common.service';
 import { Customer } from './../models/Customer';
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions, RequestMethod, ResponseContentType } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
-export class CustomerService extends CommonService{
+export class CustomerService {
 
+  protected url: string = environment.api;
   private customerUrl = this.url + 'customer/';
 
-  public downloadDocument(customer: Customer): any {
-    return this.http.get(this.customerUrl + 'downloadDocument/' + customer.code, { responseType: ResponseContentType.Blob }).map(
-      (res) => {
-        return new Blob([res.blob()], { type: 'application/word' });
-      }
-    );
+  constructor(private http: HttpClient) {
   }
 
-
-  public updateCustomer(customer: Customer): Observable<Customer> {
-    const options = this.getOptions();
+  public updateCustomer(customer: Customer): Promise<Customer> {
     const body = JSON.stringify(customer);
-    return this.http.put(this.customerUrl + 'update', body, options).map(this.extractData).catch(this.handlerError);
+    return this.http.put<Customer>(this.customerUrl + 'update', body).toPromise();
   }
 
-  public createCustomer(customer: Customer): Observable<Customer> {
-    const options = this.getOptions();
+  public createCustomer(customer: Customer): Promise<Customer> {
     const body = JSON.stringify(customer);
-    return this.http.post(this.customerUrl + 'create', body, options).map(this.extractData).catch(this.handlerError);
+    return this.http.post<Customer>(this.customerUrl + 'create', body).toPromise();
   }
 
-  public removeCustomer(customer: Customer): Observable<Boolean> {
-    const options = this.getOptions();
-    return this.http.delete(this.customerUrl + 'remove/' + customer.id, options).map(function () { return true; }).catch(this.handlerError);
+  public removeCustomer(customer: Customer): Promise<Boolean> {
+    return this.http.delete<Boolean>(this.customerUrl + 'remove/' + customer.id).toPromise();
   }
 
-  public findCustomer(customer: Customer): Observable<[Customer[]]> {
-    const options = this.getOptions();
+  public findCustomer(customer: Customer): Promise<Customer[]> {
     const body = JSON.stringify(customer);
-    return this.http.post(this.customerUrl + 'find', body, options).map(this.extractData).catch(this.handlerError);
+    return this.http.post<Customer[]>(this.customerUrl + 'find', body).toPromise();
   }
 
-  public findAll() {
+  public findAll(): Promise<Customer[]> {
     const customer: Customer = new Customer();
     customer.findMethod = 'fullName';
     customer.searchKeyword = '';
     const body = JSON.stringify(customer);
-    const options = this.getOptions();
-    return this.http.post(this.customerUrl + 'find', body, options).map(this.extractData).catch(this.handlerError);
+    return this.http.post<Customer[]>(this.customerUrl + 'find', body).toPromise();
+
   }
+
 
 }
