@@ -1,8 +1,7 @@
-import { DocumentModalComponent } from './../../shared/modals/document-modal/document-modal.component';
-import { ConfirmationModalComponent } from './../../shared/modals/confirmation-modal/confirmation-modal.component';
-import { CustomerSearchComponent } from './../customer-search/customer-search.component';
-import { CustomerService } from './../../shared/services/customer.service';
-import { Customer } from './../../shared/models/Customer';
+import { DocumentModalComponent } from './../../modals/document-modal/document-modal.component';
+import { ConfirmationModalComponent } from './../../modals/confirmation-modal/confirmation-modal.component';
+import { CustomerService } from './../../services/customer.service';
+import { Customer } from './../../models/Customer';
 import { Component, OnInit, ViewChild, TemplateRef, EventEmitter, Output } from '@angular/core';
 
 /**
