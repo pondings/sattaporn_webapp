@@ -40,10 +40,8 @@ export class DocumentModalComponent implements OnInit {
     this.disableForm();
     document.customer = this.customer;
     this.transactionStatus = 'Uploading..';
-    this.documentService.uploadDocument(document, fileList).subscribe(
-      (rs) => {
-        this.uploadSuccess(rs);
-      }, (error) => this.uploadError(error)
+    this.documentService.uploadDocument(document, fileList).then(
+      (res) => this.uploadSuccess(res)
     );
 
   }
@@ -71,9 +69,8 @@ export class DocumentModalComponent implements OnInit {
   }
 
   private findDocument(document: Document) {
-    this.documentService.findDocument(document).subscribe(
-      (res) => this.documentTable.fillTable(res),
-      (error) => console.log(error)
+    this.documentService.findDocument(document).then(
+      (res) => this.documentTable.fillTable(res)
     );
   }
 

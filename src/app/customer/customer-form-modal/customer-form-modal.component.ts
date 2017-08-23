@@ -1,4 +1,4 @@
-import { CustomValidation } from './../../shared/services/custom-validation.service';
+import { CustomValidation } from './../../shared/directives/custom-validation';
 
 import { CustomerService } from './../../shared/services/customer.service';
 import { Customer } from './../../shared/models/Customer';
@@ -67,12 +67,13 @@ export class CustomerFormModalComponent implements OnInit {
       this.customer.address = form.address;
       this.customer.workAddress = form.workAddress;
       this.customer.email = form.email;
-      this.customerService.updateCustomer(this.customer).subscribe(
-        rs => this.updatedCustomerEmit(rs, this.customer.index),
-        error => console.log(error)
+      this.customerService.updateCustomer(this.customer).then(
+        (res) => this.updatedCustomerEmit(res, this.customer.index)
       );
     } else {
-      this.customerService.createCustomer(form).subscribe(rs => this.customerEmit(rs), error => console.log(error));
+      this.customerService.createCustomer(form).then(
+        (res) => this.customerEmit(res)
+      );
     }
   }
 

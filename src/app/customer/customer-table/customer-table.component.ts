@@ -42,7 +42,7 @@ export class CustomerTableComponent implements OnInit {
   }
 
   private findAll() {
-    this.customerService.findAll().subscribe(rs => this.fillTable(rs), error => console.log(error));
+    this.customerService.findAll().then(res => this.fillTable(res));
   }
 
   public editRow(customer: Customer) {
@@ -63,7 +63,7 @@ export class CustomerTableComponent implements OnInit {
     this.confirmationModalComponent.openConfirmationModal();
     this.confirmationModalComponent.result.subscribe(
       (res) => {
-        if(res === true) {
+        if (res === true) {
           this.removeCustomer(customer, index);
         }
       },
@@ -72,7 +72,9 @@ export class CustomerTableComponent implements OnInit {
   }
 
   private removeCustomer(customer: Customer, index: number) {
-    this.customerService.removeCustomer(customer).subscribe(rs => this.spliceTable(index), error => console.log(error));
+    this.customerService.removeCustomer(customer).then(
+      (res) => this.spliceTable(index)
+    );
   }
 
   public spliceTable(index: number) {

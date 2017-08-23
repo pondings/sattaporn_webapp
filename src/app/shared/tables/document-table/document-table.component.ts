@@ -29,9 +29,8 @@ export class DocumentTableComponent implements OnInit {
     this.confirmationModalComponent.result.subscribe(
       (result) => {
         if (result === true) {
-          this.documentService.removeDocument(document).subscribe(
-            (res) => this.spliceTable(index),
-            (error) => console.log(error)
+          this.documentService.removeDocument(document).then(
+            (res) => this.spliceTable(index)
           );
         }
       }
@@ -43,9 +42,8 @@ export class DocumentTableComponent implements OnInit {
   }
 
   public downloadFile(document: Document) {
-    this.documentService.downloadDocument(document).subscribe(
-      res => this.downloadComplete(res, document.name),
-      error => console.log(error)
+    this.documentService.downloadDocument(document).then(
+      (res) => this.downloadComplete(res, document.name)
     );
   }
 

@@ -33,7 +33,7 @@ export class CustomerSearchComponent implements OnInit {
   }
 
   public onSubmit(customer: Customer) {
-    this.customerService.findCustomer(customer).subscribe(rs => this.emitResult(rs), error => console.log(error));
+    this.customerService.findCustomer(customer).then((res) => this.emitResult(res));
   }
 
   public emitResult(customerList: any) {
@@ -41,10 +41,7 @@ export class CustomerSearchComponent implements OnInit {
   }
 
   private resetForm() {
-    this.customerService.findAll().subscribe(
-      (rs) => this.emitResult(rs),
-      (error) => console.log(error)
-    );
+    this.customerService.findAll();
     this.form.reset();
   }
 
