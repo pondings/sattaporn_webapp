@@ -1,8 +1,8 @@
-<header class="header">
+<clr-header>
     <div class="branding" style="min-width: 15vw">
-         <img src="/assets/sat_logo.png" height="50px" width="75px" > 
+        <h3 style="color: white">Sattaporn</h3>
     </div>
-    <div class="header-nav">
+    <div class="header-nav" [clr-nav-level]="1">
         <a routerLink="/dashboard" class="active nav-link nav-text">{{'Dashboard' | translate}}</a>
         <a routerLink="/customer" class="nav-link nav-text">{{'Customer' | translate}}</a>
         <a routerLink="/document" class="nav-link nav-text">{{'Document' | translate}}</a>
@@ -13,4 +13,5 @@
         </a>
     </div>
     <app-setting-modal></app-setting-modal>
-</header>
+
+</clr-header>
