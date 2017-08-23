@@ -1,17 +1,27 @@
 import { element } from 'protractor';
-import { RequestOptions, Headers } from '@angular/http';
 import { Email } from './../models/Email';
-import { Observable } from 'rxjs/Observable';
-import { CommonService } from './common.service';
 import { Injectable } from '@angular/core';
 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { environment } from '../../../environments/environment';
+
 @Injectable()
-export class EmailService extends CommonService {
+export class EmailService {
 
-  private api = this.url + 'email/';
+  protected url: string = environment.api + 'email/';
 
-  public sendEmail(email: Email, fileList: FileList): Observable<String> {
+  constructor(private http: HttpClient) {}
+
+  public sendEmail(email: Email, fileList: FileList): Promise<String> {
     const formData: FormData = new FormData();
+
+    formData.append('content', email.content);
+    formData.append('password', email.password);
+    formData.append('sendFrom', email.sendFrom);
+    formData.append('sendTo', email.sendTo);
+    formData.append('subject', email.subject);
+    formData.append('username', email.username);
 
     for (const key in fileList) {
       if (fileList.hasOwnProperty(key)) {
@@ -20,9 +30,11 @@ export class EmailService extends CommonService {
       }
     }
 
-    const headers = new Headers();
-    const options = new RequestOptions({ headers: headers });
-    return this.http.post(this.api + 'send', formData, options).map(this.extractData).catch(this.handlerError);
+    return this.http.post<string>(this.url + 'send', formData, {
+      headers: new HttpHeaders({
+        'SendEmail' : email.sendFrom
+      })
+    }).toPromise();
   }
 
 }
