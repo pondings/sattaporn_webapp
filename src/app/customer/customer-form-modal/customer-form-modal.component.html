@@ -89,9 +89,9 @@
     </div>
     <div class="modal-footer">
         <button [disabled]="form.pristine" type="button" class="btn btn-info" (click)="resetForm()"><clr-icon shape="refresh"></clr-icon> {{'Reset' | translate}}</button>
-        <button type="button" #cancelBtn class="btn btn-outline" (click)="closeModal()">{{'Cancel' | translate}}</button>
         <button type="submit" #submitBtn class="btn btn-primary" [disabled]="form.invalid" (click)="viewMode == true ? editButtonClicked() : onSubmit(form.value)">
-            {{viewMode == true ? ('Edit' | translate) : ('Save' | translate)}}
-        </button>
+                {{viewMode == true ? ('Edit' | translate) : ('Save' | translate)}}
+            </button>
+        <button type="button" #cancelBtn class="btn btn-outline" (click)="closeModal()">{{'Cancel' | translate}}</button>
     </div>
 </clr-modal>
