@@ -9,8 +9,11 @@
           <div class="col-md-1 col-xs-12 col-sm-12">
             <label>Send to </label>
           </div>
-          <div class="col-md-4 col-xs-12 col-sm-12">
+          <div class="col-md-2 col-xs-12 col-sm-12">
             <input class="form-control" type="text" formControlName='sendTo'>
+          </div>
+          <div class="col-md-2 col-xs-12 col-sm-12">
+            <button class="btn btn-info btn-sm" type="button" (click)='openCustomerModal()'>Choose</button>
           </div>
           <div class="col-md-1 col-xs-12 col-sm-12">
             <label>Send From</label>
@@ -49,3 +52,4 @@
   </div>
 </div>
 <app-email-authen-modal (authenEmail)='sendEmail($event)'></app-email-authen-modal>
+<app-customer-selector-modal (selectedCustomer)='setCustomerEmail($event)'></app-customer-selector-modal>

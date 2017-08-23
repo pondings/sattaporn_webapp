@@ -1,3 +1,5 @@
+import { CustomerSelectorModalComponent } from './../../shared/modals/customer-selector-modal/customer-selector-modal.component';
+import { Customer } from './../../shared/models/Customer';
 import { Email } from './../../shared/models/Email';
 import { EmailAuthenModalComponent } from './../email-authen-modal/email-authen-modal.component';
 import { EmailService } from './../../shared/services/email.service';
@@ -12,9 +14,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class EmailFormComponent implements OnInit {
 
   @ViewChild(EmailAuthenModalComponent) emailAuthenModalComponent: EmailAuthenModalComponent;
-  public form: FormGroup;
-  public attactments: any;
-  public email: Email = new Email();
+  @ViewChild(CustomerSelectorModalComponent) customerSelectorModalComponent: CustomerSelectorModalComponent;
+  private form: FormGroup;
+  private attactments: any;
+  private email: Email = new Email();
+  private customer: Customer;
 
   constructor(private fb: FormBuilder, private emailService: EmailService) {
     this.createForm();
@@ -23,12 +27,21 @@ export class EmailFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  public onsubmit(email: Email) {
+  private setCustomerEmail(customer: Customer) {
+    this.form.controls.sendTo.setValue(customer.email);
+    this.customer = customer;
+  }
+
+  private openCustomerModal() {
+    this.customerSelectorModalComponent.openModal();
+  }
+
+  private onsubmit(email: Email) {
     this.email = email;
     this.emailAuthenModalComponent.openModal();
   }
 
-  public sendEmail(authEmail: Email) {
+  private sendEmail(authEmail: Email) {
     this.email.username = authEmail.username;
     this.email.password = authEmail.password;
     this.emailService.sendEmail(this.email, this.attactments).then(
@@ -36,17 +49,20 @@ export class EmailFormComponent implements OnInit {
     );
   }
 
-  public fileChange(event: any) {
+  private fileChange(event: any) {
     this.attactments = event.target.files;
   }
 
   private createForm() {
     this.form = this.fb.group({
-      content: ['', Validators.required],
-      sendFrom: ['', Validators.required],
-      sendTo: ['', Validators.required],
-      subject: ['', Validators.required]
+      content: ['TESTTEST', Validators.required],
+      sendFrom: ['SattapornApplication', Validators.required],
+      sendTo: ['unborn_pondzzz@hotmail.com', Validators.required],
+      subject: ['Test email sender', Validators.required]
     });
+
+    this.form.controls.sendTo.disable();
+    this.form.controls.sendFrom.disable();
   }
 
 }
