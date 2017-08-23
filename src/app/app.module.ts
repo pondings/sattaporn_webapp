@@ -1,3 +1,4 @@
+import { InterceptorService } from './shared/services/interceptor.service';
 import { EmailService } from './shared/services/email.service';
 import { EmailModule } from './email/email.module';
 import { DocumentService } from './shared/services/document.service';
@@ -9,6 +10,8 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, Http } from '@angular/http';
+import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -31,6 +34,7 @@ export function HttpLoaderFactory(http: Http) {
   ],
   imports: [
     HttpModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     SharedModule,
@@ -49,7 +53,11 @@ export function HttpLoaderFactory(http: Http) {
       }
     }),
   ],
-  providers: [CustomerService, DocumentService, EmailService],
+  providers: [CustomerService, DocumentService, EmailService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
