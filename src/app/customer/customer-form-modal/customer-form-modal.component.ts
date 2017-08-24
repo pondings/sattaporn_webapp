@@ -5,7 +5,6 @@ import { Customer } from './../../shared/models/Customer';
 import { Component, OnInit, ViewChild, EventEmitter, Output, Input, ElementRef, Renderer } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { saveAs } from 'file-saver';
-import 'rxjs/Rx';
 
 /**
  * Third-Party
