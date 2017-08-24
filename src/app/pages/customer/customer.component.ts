@@ -1,4 +1,4 @@
-import { Customer } from './../shared/models/Customer';
+import { Customer } from './../../shared/models/Customer';
 import { CustomerFormModalComponent } from './customer-form-modal/customer-form-modal.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 

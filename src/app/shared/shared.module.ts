@@ -1,5 +1,5 @@
 import { CustomerTableComponent } from './tables/customer-table/customer-table.component';
-import { DocumentModule } from './../document/document.module';
+import { DocumentModule } from './../pages/document/document.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';

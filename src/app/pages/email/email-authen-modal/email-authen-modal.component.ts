@@ -1,4 +1,4 @@
-import { Email } from './../../shared/models/Email';
+import { Email } from './../../../shared/models/Email';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 

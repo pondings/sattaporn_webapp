@@ -1,8 +1,8 @@
-import { CustomerSelectorModalComponent } from './../../shared/modals/customer-selector-modal/customer-selector-modal.component';
-import { Customer } from './../../shared/models/Customer';
-import { Email } from './../../shared/models/Email';
+import { CustomerSelectorModalComponent } from './../../../shared/modals/customer-selector-modal/customer-selector-modal.component';
+import { Customer } from './../../../shared/models/Customer';
+import { Email } from './../../../shared/models/Email';
 import { EmailAuthenModalComponent } from './../email-authen-modal/email-authen-modal.component';
-import { EmailService } from './../../shared/services/email.service';
+import { EmailService } from './../../../shared/services/email.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 

@@ -1,7 +1,7 @@
-import { CustomValidation } from './../../shared/directives/custom-validation';
+import { CustomValidation } from './../../../shared/directives/custom-validation';
 
-import { CustomerService } from './../../shared/services/customer.service';
-import { Customer } from './../../shared/models/Customer';
+import { CustomerService } from './../../../shared/services/customer.service';
+import { Customer } from './../../../shared/models/Customer';
 import { Component, OnInit, ViewChild, EventEmitter, Output, Input, ElementRef, Renderer } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { saveAs } from 'file-saver';

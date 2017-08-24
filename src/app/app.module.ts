@@ -1,11 +1,11 @@
 import { InterceptorService } from './shared/services/interceptor.service';
 import { EmailService } from './shared/services/email.service';
-import { EmailModule } from './email/email.module';
+import { EmailModule } from './pages/email/email.module';
 import { DocumentService } from './shared/services/document.service';
-import { DocumentModule } from './document/document.module';
+import { DocumentModule } from './pages/document/document.module';
 import { CustomerService } from './shared/services/customer.service';
-import { CustomerModule } from './customer/customer.module';
-import { DashboardModule } from './dashboard/dashboard.module';
+import { CustomerModule } from './pages/customer/customer.module';
+import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
