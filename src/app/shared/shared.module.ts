@@ -14,6 +14,7 @@ import { SettingModalComponent } from './modals/setting-modal/setting-modal.comp
 import { TranslateModule } from '@ngx-translate/core';
 import { ValidatorDirective } from './directives/validator.directive';
 import { CustomerSelectorModalComponent } from './modals/customer-selector-modal/customer-selector-modal.component';
+import { DocumentSelectorModalComponent } from './modals/document-selector-modal/document-selector-modal.component';
 
 @NgModule({
   imports: [
@@ -23,9 +24,24 @@ import { CustomerSelectorModalComponent } from './modals/customer-selector-modal
     TranslateModule,
     ReactiveFormsModule
   ],
-  declarations: [ConfirmationModalComponent, DocumentTableComponent, DocumentModalComponent, SettingModalComponent,
-     ValidatorDirective, CustomerSelectorModalComponent, CustomerTableComponent],
-  exports: [ConfirmationModalComponent, DocumentModalComponent, SettingModalComponent, ValidatorDirective, CustomerSelectorModalComponent, 
-  CustomerTableComponent]
+  declarations: [
+    ConfirmationModalComponent,
+    DocumentTableComponent,
+    DocumentModalComponent,
+    SettingModalComponent,
+    ValidatorDirective,
+    CustomerSelectorModalComponent,
+    CustomerTableComponent,
+    DocumentSelectorModalComponent
+  ],
+  exports: [
+    ConfirmationModalComponent,
+    DocumentModalComponent,
+    SettingModalComponent,
+    ValidatorDirective,
+    CustomerSelectorModalComponent,
+    CustomerTableComponent,
+    DocumentSelectorModalComponent
+  ]
 })
 export class SharedModule { }
