@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { LoginUserInfoInStorage, UserInfoService } from './../user-info.service';
 import { Authenication } from './../../models/Authenication';
@@ -15,7 +16,12 @@ export class AuthenicationService {
   private authUrl = this.url + 'auth/';
   public landingPage = '/customer';
 
-  constructor(private http: HttpClient, private userInfoService: UserInfoService) { }
+  constructor(private http: HttpClient, private userInfoService: UserInfoService, private router: Router) { }
+
+  public logout() {
+    this.userInfoService.removeUserInfo();
+    this.router.navigate(['login']);
+  }
 
   public login(auth: Authenication): Observable<any> {
     const body = auth;
