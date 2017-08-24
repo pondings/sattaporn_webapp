@@ -1,7 +1,7 @@
 <clr-main-container>
     <app-header></app-header>
     <div class="content-container">
-        <div class="content-area">
+        <div class="content-area" (click)='clickedBody()'>
             <router-outlet></router-outlet>
         </div>
         <clr-vertical-nav [clrVerticalNavCollapsible]="true" #verticalNav>
