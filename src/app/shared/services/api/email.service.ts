@@ -32,7 +32,7 @@ export class EmailService {
 
     return this.http.post<string>(this.url + 'send', formData, {
       headers: new HttpHeaders({
-        'SendEmail' : email.sendFrom
+        'Content-Type' : 'application/json'
       })
     }).toPromise();
   }
