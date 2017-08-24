@@ -1,0 +1,60 @@
+<clr-modal [(clrModalOpen)]="opened" [clrModalSize]="'lg'">
+  <h3 class="modal-title">Document</h3>
+  <div class="modal-body">
+      <div class="col-md-12">
+          <form [formGroup]='form'>
+              <section class="form-block">
+                  <div class="form-group col-md-12 flex-items-xs-center row">
+                      <div class="col-md-6 row">
+                          <div class="col-md-4">
+                              <label>Keyword</label>
+                          </div>
+                          <div class="col-md-6">
+                              <input type="text" class="form-control" formControlName='searchKeyword'>
+                          </div>
+                      </div>
+                      <div class="col-md-6 row">
+                          <div class="col-md-4">
+                              <label>Find by</label>
+                          </div>
+                          <div class="col-md-8 select">
+                              <select formControlName='findMethod'>
+                                  <option value="code">Code</option>
+                                  <option value="name">Name</option>
+                              </select>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-group col-md-12 flex-items-xs-center row">
+                      <button class="btn btn-primary btn-sm" (click)='onsubmit(form.value)'>Search</button>
+                      <button class="btn btn-danger btn-sm" (click)='resetForm()'>Cancel</button>
+                  </div>
+              </section>
+          </form>
+      </div>
+      <div class="col-md-12">
+          <clr-datagrid>
+              <clr-dg-column>code</clr-dg-column>
+              <clr-dg-column>name</clr-dg-column>
+              <clr-dg-column>type</clr-dg-column>
+              <clr-dg-column>create date</clr-dg-column>
+              <clr-dg-column></clr-dg-column>
+
+              <clr-dg-row *ngFor="let document of documentList">
+                  <clr-dg-cell>{{document.code}}</clr-dg-cell>
+                  <clr-dg-cell>{{document.name}}</clr-dg-cell>
+                  <clr-dg-cell>{{document.type}}</clr-dg-cell>
+                  <clr-dg-cell>{{document.createDate}}</clr-dg-cell>
+                  <clr-dg-cell [style.text-align]="'center'">
+                      <button type="button" class="btn btn-primary btn-sm" (click)='selectDocument(document)'>Select</button>
+                  </clr-dg-cell>
+              </clr-dg-row>
+
+              <clr-dg-footer>{{documentList?.length}} documents</clr-dg-footer>
+          </clr-datagrid>
+      </div>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-outline" (click)="closeModal()">Cancel</button>
+  </div>
+</clr-modal>
