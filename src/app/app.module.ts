@@ -1,3 +1,7 @@
+import { AuthenicationService } from './shared/services/api/authenication.service';
+import { UserInfoService } from './shared/services/user-info.service';
+import { AuthenicationModule } from './pages/authenication/authenication.module';
+import { AuthGuardService } from './shared/services/auth-guard.service';
 import { InterceptorService } from './shared/services/interceptor.service';
 import { EmailService } from './shared/services/api/email.service';
 import { EmailModule } from './pages/email/email.module';
@@ -10,7 +14,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule, Http } from '@angular/http';
-import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -42,6 +46,7 @@ export function HttpLoaderFactory(http: Http) {
     DashboardModule,
     DocumentModule,
     CustomerModule,
+    AuthenicationModule,
     EmailModule,
     ClarityModule.forRoot(),
     BrowserAnimationsModule,
@@ -53,11 +58,18 @@ export function HttpLoaderFactory(http: Http) {
       }
     }),
   ],
-  providers: [CustomerService, DocumentService, EmailService, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: InterceptorService,
-    multi: true
-  }],
+  providers: [
+    CustomerService,
+    DocumentService,
+    EmailService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    },
+    AuthGuardService, UserInfoService,
+    AuthenicationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

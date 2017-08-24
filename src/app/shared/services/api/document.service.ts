@@ -38,7 +38,7 @@ export class DocumentService {
     formData.append('custId', document.customer.id.toString());
     return this.http.post<Document>(this.url + 'uploadDocument', formData, {
       headers: new HttpHeaders(
-        { 'UploadDocument': document.name }
+        { 'Content-Type': 'application/json' }
       )
     }).toPromise();
   }
