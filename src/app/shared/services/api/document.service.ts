@@ -43,9 +43,9 @@ export class DocumentService {
     }).toPromise();
   }
 
-  public findDocument(document: Document): Promise<Document> {
+  public findDocument(document: Document): Promise<Document[]> {
     const body = JSON.stringify(document);
-    return this.http.post<Document>(this.url + 'find', body).toPromise();
+    return this.http.post<Document[]>(this.url + 'find', body).toPromise();
   }
 
 }
