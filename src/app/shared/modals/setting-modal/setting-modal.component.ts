@@ -1,3 +1,4 @@
+import { AuthenicationService } from './../../services/api/authenication.service';
 import { Component, OnInit } from '@angular/core';
 
 /**
@@ -14,7 +15,7 @@ export class SettingModalComponent implements OnInit {
 
   public opened: boolean;
 
-  constructor(private translate: TranslateService) { }
+  constructor(private translate: TranslateService, private authService: AuthenicationService) { }
 
   ngOnInit() {
   }
@@ -33,6 +34,10 @@ export class SettingModalComponent implements OnInit {
 
   public setCurrentLanguage(language: any) {
     this.translate.use(language.target.value);
+  }
+
+  public logout() {
+    this.authService.logout();
   }
 
 }
