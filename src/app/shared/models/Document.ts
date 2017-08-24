@@ -18,4 +18,18 @@ export class Document {
     public searchKeyword: string;
     public index: number;
 
+    public getFindDocumentObject(searchKeyword: string, findMethod: string): this {
+        this.searchKeyword = searchKeyword;
+        this.findMethod = findMethod;
+        return this;
+    }
+
+    public getFindByDocumentnameAndCustomerCode(docName: string, custCode: string): this {
+        this.name = docName.trim() == null ? '' : docName ;
+        this.customer = new Customer();
+        this.customer.code = custCode;
+        this.findMethod = 'docNameAndCustCode';
+        return this;
+    }
+
 }
