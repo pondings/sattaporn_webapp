@@ -1,11 +1,11 @@
 import { CustomerService } from './customer.service';
-import { Document } from './../models/Document';
-import { Customer } from './../models/Customer';
+import { Document } from './../../models/Document';
+import { Customer } from './../../models/Customer';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHandler, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ResponseContentType } from '@angular/http';
 
-import { environment } from '../../../environments/environment';
+import { environment } from './../../../../environments/environment';
 
 
 @Injectable()

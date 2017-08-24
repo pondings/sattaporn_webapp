@@ -1,6 +1,6 @@
 import { DocumentModalComponent } from './../../modals/document-modal/document-modal.component';
 import { ConfirmationModalComponent } from './../../modals/confirmation-modal/confirmation-modal.component';
-import { CustomerService } from './../../services/customer.service';
+import { CustomerService } from './../../services/api/customer.service';
 import { Customer } from './../../models/Customer';
 import { Component, OnInit, ViewChild, TemplateRef, EventEmitter, Output } from '@angular/core';
 

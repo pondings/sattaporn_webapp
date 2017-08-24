@@ -1,9 +1,9 @@
 import { InterceptorService } from './shared/services/interceptor.service';
-import { EmailService } from './shared/services/email.service';
+import { EmailService } from './shared/services/api/email.service';
 import { EmailModule } from './pages/email/email.module';
-import { DocumentService } from './shared/services/document.service';
+import { DocumentService } from './shared/services/api/document.service';
 import { DocumentModule } from './pages/document/document.module';
-import { CustomerService } from './shared/services/customer.service';
+import { CustomerService } from './shared/services/api/customer.service';
 import { CustomerModule } from './pages/customer/customer.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { CoreModule } from './core/core.module';

@@ -1,10 +1,10 @@
 import { element } from 'protractor';
-import { Email } from './../models/Email';
+import { Email } from './../../models/Email';
 import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { environment } from '../../../environments/environment';
+import { environment } from './../../../../environments/environment';
 
 @Injectable()
 export class EmailService {

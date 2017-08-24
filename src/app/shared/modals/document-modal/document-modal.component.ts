@@ -1,6 +1,6 @@
 import { DocumentTableComponent } from './../../tables/document-table/document-table.component';
 import { Document } from './../../models/Document';
-import { DocumentService } from './../../services/document.service';
+import { DocumentService } from './../../services/api/document.service';
 import { Customer } from './../../models/Customer';
 import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 
