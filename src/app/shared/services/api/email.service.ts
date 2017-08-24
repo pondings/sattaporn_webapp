@@ -11,9 +11,9 @@ export class EmailService {
 
   protected url: string = environment.api + 'email/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  public sendEmail(email: Email, fileList: FileList): Promise<String> {
+  public sendEmail(email: Email, fileList: FileList, docCodes: string[]): Promise<String> {
     const formData: FormData = new FormData();
 
     formData.append('content', email.content);
@@ -30,9 +30,16 @@ export class EmailService {
       }
     }
 
+    for (const key in docCodes) {
+      if (docCodes.hasOwnProperty(key)) {
+        const element = docCodes[key];
+        formData.append('docCodes', element);
+      }
+    }
+
     return this.http.post<string>(this.url + 'send', formData, {
       headers: new HttpHeaders({
-        'Content-Type' : 'application/json'
+        'Content-Type': 'application/json'
       })
     }).toPromise();
   }
