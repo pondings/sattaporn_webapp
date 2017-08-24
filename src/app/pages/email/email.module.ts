@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { EmailRoutingModule } from './email-routing.module';
 import { EmailComponent } from './email.component';
 
 import { ClarityModule } from 'clarity-angular';
@@ -15,7 +14,6 @@ import { EmailAuthenModalComponent } from './email-authen-modal/email-authen-mod
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    EmailRoutingModule,
     SharedModule,
     ClarityModule,
     TranslateModule
