@@ -1,3 +1,4 @@
+import { DocumentSelectorModalComponent } from './../../../shared/modals/document-selector-modal/document-selector-modal.component';
 import { CustomerSelectorModalComponent } from './../../../shared/modals/customer-selector-modal/customer-selector-modal.component';
 import { Customer } from './../../../shared/models/Customer';
 import { Email } from './../../../shared/models/Email';
@@ -15,16 +16,31 @@ export class EmailFormComponent implements OnInit {
 
   @ViewChild(EmailAuthenModalComponent) emailAuthenModalComponent: EmailAuthenModalComponent;
   @ViewChild(CustomerSelectorModalComponent) customerSelectorModalComponent: CustomerSelectorModalComponent;
+  @ViewChild(DocumentSelectorModalComponent) documentSelectorModalComponent: DocumentSelectorModalComponent;
   private form: FormGroup;
   private attactments: any;
   private email: Email = new Email();
   private customer: Customer;
+  private documentCodes: string[] = [];
 
   constructor(private fb: FormBuilder, private emailService: EmailService) {
     this.createForm();
   }
 
   ngOnInit() {
+  }
+
+  private setDocumentList(docCode: string) {
+    this.documentCodes.push(docCode);
+    this.documentCodes = this.documentCodes.filter(
+      (item, pos, self) => {
+        return self.indexOf(item) === pos;
+      }
+    );
+  }
+
+  private openDocumentModal() {
+    this.documentSelectorModalComponent.openModal(this.customer.code);
   }
 
   private setCustomerEmail(customer: Customer) {
@@ -46,7 +62,7 @@ export class EmailFormComponent implements OnInit {
   private sendEmail(authEmail: Email) {
     this.email.username = authEmail.username;
     this.email.password = authEmail.password;
-    this.emailService.sendEmail(this.email, this.attactments).then(
+    this.emailService.sendEmail(this.email, this.attactments, this.documentCodes).then(
       (res) => console.log('Send email successfully')
     );
   }
@@ -65,6 +81,10 @@ export class EmailFormComponent implements OnInit {
 
     this.form.controls.sendTo.disable();
     this.form.controls.sendFrom.disable();
+  }
+
+  private resetForm() {
+    this.createForm();
   }
 
 }

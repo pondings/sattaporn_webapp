@@ -33,7 +33,7 @@
         <div class="form-group row flex-items-md-left col-md-12">
           <textarea rows="10" cols="" class="form-control" formControlName='content'></textarea>
         </div>
-        <div class="form-group row col-md-12 flex-items-md-left">
+        <div class="form-group row col-md-12">
           <div class="col-md-6 row">
             <div class="col-md-2 col-xs-12 col-sm-12">
               <label>Attachments</label>
@@ -42,10 +42,19 @@
               <input type="file" multiple class="form-control" (change)='fileChange($event)'>
             </div>
           </div>
+          <div class="col-md-6 row">
+            <div class="col-md-12 col-xs-12 col-sm 12 text-left">
+                <label>{{documentCodes.length}} File Selected</label>
+              <button class="btn btn-primary btn-sm" [disabled]='customer == undefined || customer == null'
+                (click)='openDocumentModal()'>
+                Use Existing file
+              </button>
+            </div>
+          </div>
         </div>
         <div class="form-group row col-md-12 flex-items-md-right">
           <button class="btn btn-primary" (click)='onsubmit(form.value)' type="button" [disabled]='form.invalid'>Send</button>
-          <button class="btn btn-danger" type="reset">Cancel</button>
+          <button class="btn btn-danger" (click)='resetForm()'>Cancel</button>
         </div>
       </section>
     </form>
@@ -53,3 +62,4 @@
 </div>
 <app-email-authen-modal (authenEmail)='sendEmail($event)'></app-email-authen-modal>
 <app-customer-selector-modal (selectedCustomer)='setCustomerEmail($event)'></app-customer-selector-modal>
+<app-document-selector-modal (selectedDocument)='setDocumentList($event)'></app-document-selector-modal>

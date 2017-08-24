@@ -31,6 +31,7 @@ export class EmailAuthenModalComponent implements OnInit {
     this.form.controls.username.disable();
   }
 
+
   public onsubmit(form: any) {
     form.username = this.userInfo.email;
     this.authenEmail.emit(form);
@@ -40,6 +41,7 @@ export class EmailAuthenModalComponent implements OnInit {
 
   public openModal() {
     this.opened = true;
+    this.createForm();
   }
 
   public closeModal() {
