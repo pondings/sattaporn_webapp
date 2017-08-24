@@ -38,6 +38,8 @@ export class EmailFormComponent implements OnInit {
 
   private onsubmit(email: Email) {
     this.email = email;
+    this.email.sendTo = this.customer.email;
+    this.email.sendFrom = 'SattapornApplication';
     this.emailAuthenModalComponent.openModal();
   }
 
@@ -55,10 +57,10 @@ export class EmailFormComponent implements OnInit {
 
   private createForm() {
     this.form = this.fb.group({
-      content: ['TESTTEST', Validators.required],
+      content: ['', Validators.required],
       sendFrom: ['SattapornApplication', Validators.required],
-      sendTo: ['unborn_pondzzz@hotmail.com', Validators.required],
-      subject: ['Test email sender', Validators.required]
+      sendTo: ['', Validators.required],
+      subject: ['', Validators.required]
     });
 
     this.form.controls.sendTo.disable();

@@ -1,3 +1,4 @@
+import { UserInfoService, UserInStorage } from './../../../shared/services/user-info.service';
 import { Email } from './../../../shared/models/Email';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -12,8 +13,9 @@ export class EmailAuthenModalComponent implements OnInit {
   @Output() authenEmail: EventEmitter<Email> = new EventEmitter();
   public opened = false;
   public form: FormGroup;
+  public userInfo: UserInStorage ;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private userInfoService: UserInfoService) {
     this.createForm();
   }
 
@@ -21,13 +23,16 @@ export class EmailAuthenModalComponent implements OnInit {
   }
 
   private createForm() {
+    this.userInfo = this.userInfoService.getUserInfo();
     this.form = this.fb.group({
-      username: ['', Validators.required],
+      username: [this.userInfo.email, Validators.required],
       password: ['', Validators.required]
     });
+    this.form.controls.username.disable();
   }
 
   public onsubmit(form: any) {
+    form.username = this.userInfo.email;
     this.authenEmail.emit(form);
     this.form.reset();
     this.closeModal();
