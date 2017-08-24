@@ -38,6 +38,7 @@ export class SettingModalComponent implements OnInit {
 
   public logout() {
     this.authService.logout();
+    this.opened = false;
   }
 
 }
