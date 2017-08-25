@@ -15,12 +15,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ValidatorDirective } from './directives/validator.directive';
 import { CustomerSelectorModalComponent } from './modals/customer-selector-modal/customer-selector-modal.component';
 import { DocumentSelectorModalComponent } from './modals/document-selector-modal/document-selector-modal.component';
+import { RoleCheckerDirective } from './directives/role-checker.directive';
 
 @NgModule({
   imports: [
     CommonModule,
     ClarityModule,
-    DocumentModule,
     TranslateModule,
     ReactiveFormsModule
   ],
@@ -32,7 +32,8 @@ import { DocumentSelectorModalComponent } from './modals/document-selector-modal
     ValidatorDirective,
     CustomerSelectorModalComponent,
     CustomerTableComponent,
-    DocumentSelectorModalComponent
+    DocumentSelectorModalComponent,
+    RoleCheckerDirective
   ],
   exports: [
     ConfirmationModalComponent,
@@ -41,7 +42,8 @@ import { DocumentSelectorModalComponent } from './modals/document-selector-modal
     ValidatorDirective,
     CustomerSelectorModalComponent,
     CustomerTableComponent,
-    DocumentSelectorModalComponent
+    DocumentSelectorModalComponent,
+    RoleCheckerDirective
   ]
 })
 export class SharedModule { }

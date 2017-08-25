@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DocumentComponent } from './document.component';
@@ -13,7 +14,8 @@ import { DocumentSearchFormComponent } from './document-search-form/document-sea
   imports: [
     CommonModule,
     ClarityModule,
-    ReactiveFormsModule
+    SharedModule,
+    ReactiveFormsModule,
   ],
   declarations: [DocumentComponent, DocumentSearchFormComponent],
   exports: [DocumentSearchFormComponent]
