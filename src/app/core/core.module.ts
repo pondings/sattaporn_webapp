@@ -1,3 +1,9 @@
+import { InterceptorService } from './services/interceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthenicationService } from './services/api/authenication.service';
+import { Authenication } from './../shared/models/Authenication';
+import { UserInfoService } from './services/user-info.service';
+import { AuthGuardService } from './services/auth-gurad.service';
 import { SharedModule } from './../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
@@ -8,7 +14,7 @@ import { CommonModule } from '@angular/common';
  * Third-Party
  */
 import { ClarityModule } from 'clarity-angular';
-import { TranslateModule} from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -19,6 +25,16 @@ import { TranslateModule} from '@ngx-translate/core';
     TranslateModule,
   ],
   declarations: [HeaderComponent],
-  exports: [HeaderComponent]
+  exports: [HeaderComponent],
+  providers: [
+    AuthGuardService,
+    UserInfoService,
+    AuthenicationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
+  ]
 })
 export class CoreModule { }

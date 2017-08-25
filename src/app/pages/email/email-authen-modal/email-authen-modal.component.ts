@@ -1,4 +1,4 @@
-import { UserInfoService, UserInStorage } from './../../../shared/services/user-info.service';
+import { UserInStorage, UserInfoService } from './../../../core/services/user-info.service';
 import { Email } from './../../../shared/models/Email';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';

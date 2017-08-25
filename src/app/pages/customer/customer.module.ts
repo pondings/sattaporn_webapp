@@ -3,14 +3,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { CustomerComponent } from './customer.component';
-import { CustomerSearchComponent } from './customer-search/customer-search.component';
-import { CustomerFormModalComponent } from './customer-form-modal/customer-form-modal.component';
 /**
  * Third-Party
  */
 import { ClarityModule } from 'clarity-angular';
-import { TranslateModule} from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
+import {
+  CustomerManagementComponent, CustomerSearchFormComponent,
+  CustomerFormModalComponent, CustomerTableComponent, CustomerSelectorModalComponent, CustomerService
+} from './';
 
 
 @NgModule({
@@ -21,6 +22,18 @@ import { TranslateModule} from '@ngx-translate/core';
     SharedModule,
     TranslateModule,
   ],
-  declarations: [CustomerComponent, CustomerSearchComponent, CustomerFormModalComponent]
+  declarations: [
+    CustomerManagementComponent,
+    CustomerSearchFormComponent,
+    CustomerFormModalComponent,
+    CustomerTableComponent,
+    CustomerSelectorModalComponent
+  ],
+  providers: [
+    CustomerService
+  ],
+  exports: [
+    CustomerSelectorModalComponent
+  ]
 })
 export class CustomerModule { }

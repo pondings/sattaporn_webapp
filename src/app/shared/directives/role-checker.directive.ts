@@ -1,5 +1,5 @@
-import { PermissionAccess } from './../services/api/authenication.service';
-import { UserInfoService } from './../services/user-info.service';
+import { UserInfoService } from './../../core/services/user-info.service';
+import { PermissionAccess } from './../../core/services/api/authenication.service';
 import { Directive, Input, AfterViewInit, Renderer, ElementRef } from '@angular/core';
 
 @Directive({

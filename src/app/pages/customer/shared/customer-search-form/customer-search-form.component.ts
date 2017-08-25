@@ -1,19 +1,15 @@
-import { Customer } from './../../../shared/models/Customer';
-import { CustomerService } from './../../../shared/services/api/customer.service';
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
-/**
- * Third-Party
- */
+import { CustomerService } from './../customer.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Customer } from './../../../../shared/models/Customer';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-customer-search',
-  templateUrl: './customer-search.component.html',
-  styleUrls: ['./customer-search.component.scss']
+  selector: 'app-customer-search-form',
+  templateUrl: './customer-search-form.component.html',
+  styleUrls: ['./customer-search-form.component.scss']
 })
-export class CustomerSearchComponent implements OnInit {
+export class CustomerSearchFormComponent implements OnInit {
 
   private form: FormGroup;
   @Output() searchResult: EventEmitter<Customer[]> = new EventEmitter();
@@ -45,6 +41,5 @@ export class CustomerSearchComponent implements OnInit {
     this.form.reset();
     this.form.controls.findMethod.setValue('fullName');
   }
-
 
 }

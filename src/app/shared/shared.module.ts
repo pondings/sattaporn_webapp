@@ -1,4 +1,3 @@
-import { CustomerTableComponent } from './tables/customer-table/customer-table.component';
 import { DocumentModule } from './../pages/document/document.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,7 +12,6 @@ import { DocumentModalComponent } from './modals/document-modal/document-modal.c
 import { SettingModalComponent } from './modals/setting-modal/setting-modal.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ValidatorDirective } from './directives/validator.directive';
-import { CustomerSelectorModalComponent } from './modals/customer-selector-modal/customer-selector-modal.component';
 import { DocumentSelectorModalComponent } from './modals/document-selector-modal/document-selector-modal.component';
 import { RoleCheckerDirective } from './directives/role-checker.directive';
 
@@ -30,8 +28,6 @@ import { RoleCheckerDirective } from './directives/role-checker.directive';
     DocumentModalComponent,
     SettingModalComponent,
     ValidatorDirective,
-    CustomerSelectorModalComponent,
-    CustomerTableComponent,
     DocumentSelectorModalComponent,
     RoleCheckerDirective
   ],
@@ -40,8 +36,6 @@ import { RoleCheckerDirective } from './directives/role-checker.directive';
     DocumentModalComponent,
     SettingModalComponent,
     ValidatorDirective,
-    CustomerSelectorModalComponent,
-    CustomerTableComponent,
     DocumentSelectorModalComponent,
     RoleCheckerDirective
   ]

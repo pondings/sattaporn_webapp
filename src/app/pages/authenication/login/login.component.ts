@@ -1,6 +1,6 @@
-import { UserInfoService } from './../../../shared/services/user-info.service';
+import { UserInfoService } from './../../../core/services/user-info.service';
+import { AuthenicationService } from './../../../core/services/api/authenication.service';
 import { Router } from '@angular/router';
-import { AuthenicationService } from './../../../shared/services/api/authenication.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 

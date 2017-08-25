@@ -1,7 +1,7 @@
+import { Authenication } from './../../../shared/models/Authenication';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { LoginUserInfoInStorage, UserInfoService } from './../user-info.service';
-import { Authenication } from './../../models/Authenication';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../../../environments/environment';

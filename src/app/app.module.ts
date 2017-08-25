@@ -1,13 +1,8 @@
-import { AuthenicationService } from './shared/services/api/authenication.service';
-import { UserInfoService } from './shared/services/user-info.service';
 import { AuthenicationModule } from './pages/authenication/authenication.module';
-import { AuthGuardService } from './shared/services/auth-guard.service';
-import { InterceptorService } from './shared/services/interceptor.service';
 import { EmailService } from './shared/services/api/email.service';
 import { EmailModule } from './pages/email/email.module';
 import { DocumentService } from './shared/services/api/document.service';
 import { DocumentModule } from './pages/document/document.module';
-import { CustomerService } from './shared/services/api/customer.service';
 import { CustomerModule } from './pages/customer/customer.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { CoreModule } from './core/core.module';
@@ -59,16 +54,8 @@ export function HttpLoaderFactory(http: Http) {
     }),
   ],
   providers: [
-    CustomerService,
     DocumentService,
-    EmailService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: InterceptorService,
-      multi: true
-    },
-    AuthGuardService, UserInfoService,
-    AuthenicationService
+    EmailService
   ],
   bootstrap: [AppComponent]
 })

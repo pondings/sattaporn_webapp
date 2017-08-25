@@ -1,5 +1,5 @@
-import { CustomerService } from './../../services/api/customer.service';
-import { Customer } from './../../models/Customer';
+import { CustomerService } from './../customer.service';
+import { Customer } from './../../../../shared/models/Customer';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 

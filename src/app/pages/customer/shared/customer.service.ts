@@ -1,4 +1,4 @@
-import { Customer } from './../../models/Customer';
+import { Customer } from './../../../shared/models/Customer';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../../../environments/environment';

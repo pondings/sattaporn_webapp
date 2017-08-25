@@ -1,5 +1,5 @@
-import { UserInfoService, UserInStorage } from './../../services/user-info.service';
-import { AuthenicationService } from './../../services/api/authenication.service';
+import { AuthenicationService } from './../../../core/services/api/authenication.service';
+import { UserInStorage, UserInfoService } from './../../../core/services/user-info.service';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 /**

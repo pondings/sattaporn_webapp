@@ -1,3 +1,4 @@
+import { CustomerModule } from './../customer/customer.module';
 import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,6 +16,7 @@ import { EmailAuthenModalComponent } from './email-authen-modal/email-authen-mod
     CommonModule,
     ReactiveFormsModule,
     SharedModule,
+    CustomerModule,
     ClarityModule,
     TranslateModule
   ],

@@ -1,16 +1,20 @@
-import { AuthGuardService } from './shared/services/auth-guard.service';
+import { CustomerManagementComponent } from './pages/customer/customer-management/customer-management.component';
+import { AuthGuardService } from './core/services/auth-gurad.service';
 import { NotFoundComponent } from './pages/authenication/not-found/not-found.component';
 import { LoginComponent } from './pages/authenication/login/login.component';
 import { EmailComponent } from './pages/email/email.component';
 import { DocumentComponent } from './pages/document/document.component';
-import { CustomerComponent } from './pages/customer/customer.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuardService] },
-  { path: 'customer', component: CustomerComponent, canActivate: [AuthGuardService] },
+  {
+    path: 'customer',
+    component: CustomerManagementComponent,
+    canActivate: [AuthGuardService]
+  },
   { path: 'document', component: DocumentComponent, canActivate: [AuthGuardService] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService] },
   { path: 'email', component: EmailComponent, canActivate: [AuthGuardService] },

@@ -1,4 +1,4 @@
-import { UserInfoService } from './shared/services/user-info.service';
+import { UserInfoService } from './core/services/user-info.service';
 import { Component, ViewChild, AfterViewInit, Renderer } from '@angular/core';
 
 /**
