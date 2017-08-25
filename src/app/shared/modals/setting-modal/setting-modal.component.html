@@ -1,5 +1,5 @@
 <clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
-    <h3 class="modal-title">{{'Setting' | translate}}</h3>
+    <h3 class="modal-title">Sattaporn Application {{'Setting' | translate}}</h3>
     <div class="modal-body">
         <section class="form-block">
             <div class="form-group row">
@@ -18,7 +18,7 @@
         </section>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-info" (click)='logout()'>Logout</button>
+        <button type="button" class="btn btn-danger" (click)='logout()' *ngIf="isLoggedIn">Logout</button>
         <button type="button" class="btn btn-info" (click)="closeBtnClicked()">{{'Close' | translate}}</button>
     </div>
 </clr-modal>

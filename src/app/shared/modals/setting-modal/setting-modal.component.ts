@@ -1,5 +1,6 @@
+import { UserInfoService, UserInStorage } from './../../services/user-info.service';
 import { AuthenicationService } from './../../services/api/authenication.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 /**
  * Third-Party
@@ -13,9 +14,16 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class SettingModalComponent implements OnInit {
 
-  public opened: boolean;
+  @ViewChild('logoutBtn') logoutBtn: ElementRef;
+  private opened: boolean;
+  private userInfo: UserInStorage;
 
-  constructor(private translate: TranslateService, private authService: AuthenicationService) { }
+  private get isLoggedIn(): boolean {
+    return this.userInfoService.isLoggedIn();
+  }
+
+  constructor(private translate: TranslateService, private authService: AuthenicationService,
+    private userInfoService: UserInfoService) { }
 
   ngOnInit() {
   }
