@@ -22,9 +22,14 @@ const routes: Routes = [
   },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService] },
   { path: 'email', component: EmailComponent, canActivate: [AuthGuardService] },
-  { path: 'login', component: LoginComponent },
-  { path: 'not-found', component: NotFoundComponent },
-  { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
+  {
+    path: 'auth',
+    children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'not-found', component: NotFoundComponent }
+    ]
+  },
+  { path: '**', redirectTo: 'auth/not-found', pathMatch: 'full' }
 ];
 
 @NgModule({

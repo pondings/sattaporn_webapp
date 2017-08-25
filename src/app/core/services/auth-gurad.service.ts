@@ -10,17 +10,15 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
   constructor(private router: Router, private userInfoService: UserInfoService, private authService: AuthenicationService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    console.log('Well redirect ');
     const url: string = state.url;
     const isLoggedIn = this.checkLogin(url);
     if (!isLoggedIn) { return false; }
     return this.authService.checkPermission(url).map(res => {
-      console.log(res);
-      if (res) {
+      if (res.permission) {
         this.userInfoService.setCurrentPermission(res);
         return true;
       }
-      this.router.navigate(['not-found']);
+      this.router.navigate(['auth/not-found']);
       return false;
     }).take(1);
   }
@@ -34,7 +32,7 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
       return true;
     }
     this.authService.landingPage = url;
-    this.router.navigate(['login']);
+    this.router.navigate(['auth/login']);
     return false;
   }
 

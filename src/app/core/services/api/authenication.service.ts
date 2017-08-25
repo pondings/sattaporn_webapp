@@ -10,7 +10,7 @@ import { environment } from './../../../../environments/environment';
 import { Subject } from 'rxjs/Subject';
 
 export class PermissionAccess {
-  id: number;
+  menuCode: string;
   userId: string;
   permission: string;
   menuName: string;
@@ -48,7 +48,7 @@ export class AuthenicationService {
 
   public logout() {
     this.userInfoService.removeUserInfo();
-    this.router.navigate(['login']);
+    this.router.navigate(['auth/login']);
   }
 
   public login(auth: Authenication): Observable<any> {
@@ -77,7 +77,7 @@ export class AuthenicationService {
           loginInfoReturn = {
             'success': false,
             'message': res.operationMessage,
-            'landingPage': '/login'
+            'landingPage': 'auth/login'
           };
         }
         loginDataSubject.next(loginInfoReturn);
