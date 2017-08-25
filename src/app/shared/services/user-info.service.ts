@@ -1,4 +1,4 @@
-import { UserInStorage } from './user-info.service';
+import { PermissionAccess } from './api/authenication.service';
 import { Injectable } from '@angular/core';
 
 export interface UserInStorage {
@@ -18,10 +18,19 @@ export interface LoginUserInfoInStorage {
 @Injectable()
 export class UserInfoService {
 
+  private currentPermission: PermissionAccess;
   public currentUserKey = 'currentUser';
   public storage: Storage = sessionStorage;
 
   constructor() { }
+
+  public setCurrentPermission(permission: PermissionAccess) {
+    this.currentPermission = permission;
+  }
+
+  public getCurrnetPermission(): PermissionAccess {
+    return this.currentPermission;
+  }
 
   public storeUserInfo(userInfoString: string) {
     this.storage.setItem(this.currentUserKey, userInfoString);
@@ -54,7 +63,7 @@ export class UserInfoService {
     if (userObj !== null) {
       return userObj.fullName;
     }
-    return 'null';
+    return 'no-display';
   }
 
   public getStoredToken(): string | null {

@@ -9,6 +9,13 @@ import { environment } from './../../../../environments/environment';
 // tslint:disable-next-line:import-blacklist
 import { Subject } from 'rxjs/Subject';
 
+export class PermissionAccess {
+  id: number;
+  userId: string;
+  permission: string;
+  menuName: string;
+}
+
 @Injectable()
 export class AuthenicationService {
 
@@ -17,6 +24,27 @@ export class AuthenicationService {
   public landingPage = '/customer';
 
   constructor(private http: HttpClient, private userInfoService: UserInfoService, private router: Router) { }
+
+  public checkPermission(menuName: string): Observable<PermissionAccess> {
+    let permissionAccess: PermissionAccess = new PermissionAccess() ;
+    permissionAccess.userId = this.userInfoService.getUserInfo().id;
+    permissionAccess.menuName = menuName;
+
+    const body = JSON.stringify(permissionAccess);
+    const permissionSubject: Subject<PermissionAccess> = new Subject<PermissionAccess>();
+
+    this.http.post<any>(this.authUrl + 'permission', body).subscribe(
+      (res) => {
+        permissionAccess = res;
+        if (res != null) {
+          permissionSubject.next(permissionAccess);
+        }
+        permissionSubject.next(permissionAccess);
+      }
+    );
+
+    return permissionSubject;
+  }
 
   public logout() {
     this.userInfoService.removeUserInfo();
