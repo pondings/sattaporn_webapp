@@ -41,7 +41,7 @@ export class CustomerSearchComponent implements OnInit {
   }
 
   private resetForm() {
-    this.customerService.findAll();
+    this.customerService.findAll().then((res) => this.emitResult(res));
     this.form.reset();
     this.form.controls.findMethod.setValue('fullName');
   }
