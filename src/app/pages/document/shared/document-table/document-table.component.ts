@@ -1,6 +1,6 @@
-import { ConfirmationModalComponent } from './../../modals/confirmation-modal/confirmation-modal.component';
-import { DocumentService } from './../../services/api/document.service';
-import { Document } from './../../models/Document';
+import { Document } from './../../../../shared/models/Document';
+import { DocumentService } from './../document.service';
+import { ConfirmationModalComponent } from './../../../../shared/modals/confirmation-modal/confirmation-modal.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { saveAs } from 'file-saver';
 

@@ -1,5 +1,5 @@
+import { DocumentModalComponent } from './../../../document/';
 import { CustomerService } from './../customer.service';
-import { DocumentModalComponent } from './../../../../shared/modals/document-modal/document-modal.component';
 import { ConfirmationModalComponent } from './../../../../shared/modals/confirmation-modal/confirmation-modal.component';
 import { Customer } from './../../../../shared/models/Customer';
 import { Component, OnInit, ViewChild, TemplateRef, EventEmitter, Output } from '@angular/core';

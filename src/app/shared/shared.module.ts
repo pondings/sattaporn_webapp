@@ -3,17 +3,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationModalComponent } from './modals/confirmation-modal/confirmation-modal.component';
-import { DocumentTableComponent } from './tables/document-table/document-table.component';
+import { ValidatorDirective } from './directives/validator.directive';
+import { RoleCheckerDirective } from './directives/role-checker.directive';
 /**
  * Third-Party
  */
 import { ClarityModule } from 'clarity-angular';
-import { DocumentModalComponent } from './modals/document-modal/document-modal.component';
 import { SettingModalComponent } from './modals/setting-modal/setting-modal.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { ValidatorDirective } from './directives/validator.directive';
-import { DocumentSelectorModalComponent } from './modals/document-selector-modal/document-selector-modal.component';
-import { RoleCheckerDirective } from './directives/role-checker.directive';
+
 
 @NgModule({
   imports: [
@@ -24,19 +22,14 @@ import { RoleCheckerDirective } from './directives/role-checker.directive';
   ],
   declarations: [
     ConfirmationModalComponent,
-    DocumentTableComponent,
-    DocumentModalComponent,
     SettingModalComponent,
     ValidatorDirective,
-    DocumentSelectorModalComponent,
     RoleCheckerDirective
   ],
   exports: [
     ConfirmationModalComponent,
-    DocumentModalComponent,
     SettingModalComponent,
     ValidatorDirective,
-    DocumentSelectorModalComponent,
     RoleCheckerDirective
   ]
 })

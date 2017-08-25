@@ -1,5 +1,5 @@
-import { DocumentService } from './../../services/api/document.service';
-import { Document } from './../../models/Document';
+import { Document } from './../../../../shared/models/Document';
+import { DocumentService } from './../document.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 

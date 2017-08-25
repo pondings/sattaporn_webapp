@@ -1,7 +1,7 @@
-import { DocumentTableComponent } from './../../tables/document-table/document-table.component';
-import { Document } from './../../models/Document';
-import { DocumentService } from './../../services/api/document.service';
-import { Customer } from './../../models/Customer';
+import { Document } from './../../../../shared/models/Document';
+import { Customer } from './../../../../shared/models/Customer';
+import { DocumentService } from './../document.service';
+import { DocumentTableComponent } from './../document-table/document-table.component';
 import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 
 /**

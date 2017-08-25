@@ -1,3 +1,4 @@
+import { DocumentModule } from './../document/document.module';
 import { CustomerModule } from './../customer/customer.module';
 import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
@@ -18,7 +19,8 @@ import { EmailAuthenModalComponent } from './email-authen-modal/email-authen-mod
     SharedModule,
     CustomerModule,
     ClarityModule,
-    TranslateModule
+    TranslateModule,
+    DocumentModule
   ],
   declarations: [EmailComponent, EmailFormComponent, EmailAuthenModalComponent]
 })

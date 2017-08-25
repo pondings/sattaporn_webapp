@@ -1,3 +1,4 @@
+import { DocumentModule } from './../document/document.module';
 import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -21,6 +22,7 @@ import {
     ReactiveFormsModule,
     SharedModule,
     TranslateModule,
+    DocumentModule
   ],
   declarations: [
     CustomerManagementComponent,

@@ -1,7 +1,6 @@
 import { AuthenicationModule } from './pages/authenication/authenication.module';
 import { EmailService } from './shared/services/api/email.service';
 import { EmailModule } from './pages/email/email.module';
-import { DocumentService } from './shared/services/api/document.service';
 import { DocumentModule } from './pages/document/document.module';
 import { CustomerModule } from './pages/customer/customer.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
@@ -54,7 +53,6 @@ export function HttpLoaderFactory(http: Http) {
     }),
   ],
   providers: [
-    DocumentService,
     EmailService
   ],
   bootstrap: [AppComponent]

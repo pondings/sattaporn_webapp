@@ -1,5 +1,5 @@
-import { DocumentSelectorModalComponent } from './../../../shared/modals/document-selector-modal/document-selector-modal.component';
-import { CustomerSelectorModalComponent } from './../../customer/shared/customer-selector-modal/customer-selector-modal.component';
+import { DocumentSelectorModalComponent } from './../../document/';
+import { CustomerSelectorModalComponent } from './../../customer/';
 import { Customer } from './../../../shared/models/Customer';
 import { Email } from './../../../shared/models/Email';
 import { EmailAuthenModalComponent } from './../email-authen-modal/email-authen-modal.component';

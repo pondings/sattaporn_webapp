@@ -1,5 +1,4 @@
-import { Document } from './../../models/Document';
-import { Customer } from './../../models/Customer';
+import { Document } from './../../../shared/models/Document';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHandler, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ResponseContentType } from '@angular/http';
