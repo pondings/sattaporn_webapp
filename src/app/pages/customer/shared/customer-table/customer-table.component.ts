@@ -20,7 +20,7 @@ export class CustomerTableComponent implements OnInit {
   @Output() viewCustomerInfo: EventEmitter<Customer> = new EventEmitter();
   @ViewChild(ConfirmationModalComponent) confirmationModalComponent: ConfirmationModalComponent;
   @ViewChild(DocumentModalComponent) documentModalComponent: DocumentModalComponent;
-  private customerList: Customer[] = [];
+  public customerList: Customer[] = [];
   private columns;
 
   constructor(private customerService: CustomerService, private translate: TranslateService) { }

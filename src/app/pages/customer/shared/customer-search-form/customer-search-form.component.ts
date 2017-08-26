@@ -11,7 +11,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class CustomerSearchFormComponent implements OnInit {
 
-  private form: FormGroup;
+  public form: FormGroup;
   @Output() searchResult: EventEmitter<Customer[]> = new EventEmitter();
 
   constructor(private fb: FormBuilder, private customerService: CustomerService, private translate: TranslateService) {
@@ -36,7 +36,7 @@ export class CustomerSearchFormComponent implements OnInit {
     this.searchResult.emit(customerList);
   }
 
-  private resetForm() {
+  public resetForm() {
     this.customerService.findAll().then((res) => this.emitResult(res));
     this.form.reset();
     this.form.controls.findMethod.setValue('fullName');

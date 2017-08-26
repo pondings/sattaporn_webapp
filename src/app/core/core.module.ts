@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
  */
 import { ClarityModule } from 'clarity-angular';
 import { TranslateModule } from '@ngx-translate/core';
+import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,7 @@ import { TranslateModule } from '@ngx-translate/core';
     SharedModule,
     TranslateModule,
   ],
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, LoadingScreenComponent],
   exports: [HeaderComponent],
   providers: [
     AuthGuardService,

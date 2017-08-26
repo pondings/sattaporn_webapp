@@ -11,9 +11,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class DocumentSelectorModalComponent implements OnInit {
 
   @Output() selectedDocument: EventEmitter<string> = new EventEmitter();
-  private opened = false;
-  private documentList: Document[] = [];
-  private form: FormGroup;
+  public opened = false;
+  public documentList: Document[] = [];
+  public form: FormGroup;
   private custCode: string;
 
   constructor(private documentService: DocumentService, private fb: FormBuilder) {
@@ -28,7 +28,7 @@ export class DocumentSelectorModalComponent implements OnInit {
     this.closeModal();
   }
 
-  private onsubmit(formValue: any) {
+  public onsubmit(formValue: any) {
     const document: Document = (formValue.findMethod === 'name' ? new Document().getFindByDocumentnameAndCustomerCode(
       formValue.searchKeyword, this.custCode) : new Document().getFindDocumentObject(formValue.searchKeyword, formValue.findMethod));
 
@@ -37,7 +37,7 @@ export class DocumentSelectorModalComponent implements OnInit {
     );
   }
 
-  private resetForm() {
+  public resetForm() {
     this.createForm();
   }
 

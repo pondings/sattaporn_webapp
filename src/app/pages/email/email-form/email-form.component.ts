@@ -17,11 +17,11 @@ export class EmailFormComponent implements OnInit {
   @ViewChild(EmailAuthenModalComponent) emailAuthenModalComponent: EmailAuthenModalComponent;
   @ViewChild(CustomerSelectorModalComponent) customerSelectorModalComponent: CustomerSelectorModalComponent;
   @ViewChild(DocumentSelectorModalComponent) documentSelectorModalComponent: DocumentSelectorModalComponent;
-  private form: FormGroup;
+  public form: FormGroup;
   private attactments: any;
   private email: Email = new Email();
-  private customer: Customer;
-  private documentCodes: string[] = [];
+  public customer: Customer;
+  public documentCodes: string[] = [];
 
   constructor(private fb: FormBuilder, private emailService: EmailService) {
     this.createForm();
@@ -30,7 +30,7 @@ export class EmailFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  private setDocumentList(docCode: string) {
+  public setDocumentList(docCode: string) {
     this.documentCodes.push(docCode);
     this.documentCodes = this.documentCodes.filter(
       (item, pos, self) => {
@@ -39,27 +39,27 @@ export class EmailFormComponent implements OnInit {
     );
   }
 
-  private openDocumentModal() {
+  public openDocumentModal() {
     this.documentSelectorModalComponent.openModal(this.customer.code);
   }
 
-  private setCustomerEmail(customer: Customer) {
+  public setCustomerEmail(customer: Customer) {
     this.form.controls.sendTo.setValue(customer.email);
     this.customer = customer;
   }
 
-  private openCustomerModal() {
+  public openCustomerModal() {
     this.customerSelectorModalComponent.openModal();
   }
 
-  private onsubmit(email: Email) {
+  public onsubmit(email: Email) {
     this.email = email;
     this.email.sendTo = this.customer.email;
     this.email.sendFrom = 'SattapornApplication';
     this.emailAuthenModalComponent.openModal();
   }
 
-  private sendEmail(authEmail: Email) {
+  public sendEmail(authEmail: Email) {
     this.email.username = authEmail.username;
     this.email.password = authEmail.password;
     this.emailService.sendEmail(this.email, this.attactments, this.documentCodes).then(
@@ -67,7 +67,7 @@ export class EmailFormComponent implements OnInit {
     );
   }
 
-  private fileChange(event: any) {
+  public fileChange(event: any) {
     this.attactments = event.target.files;
   }
 
@@ -83,7 +83,7 @@ export class EmailFormComponent implements OnInit {
     this.form.controls.sendFrom.disable();
   }
 
-  private resetForm() {
+  public resetForm() {
     this.createForm();
   }
 

@@ -25,10 +25,10 @@ export class CustomerFormModalComponent implements OnInit {
   @ViewChild('openDocumemtListBtn') openDocumemtListBtn: ElementRef;
   @Output() customerModel: EventEmitter<Customer> = new EventEmitter();
   @Output() updatedCustomer: EventEmitter<Customer> = new EventEmitter();
-  private viewMode: Boolean;
-  private form: FormGroup;
-  private opened: boolean;
-  private customerFormModalHeader: string;
+  public viewMode: Boolean;
+  public form: FormGroup;
+  public opened: boolean;
+  public customerFormModalHeader: string;
   private customer: Customer;
   private transactionStatus: string;
   private customerBackup: Customer;
@@ -91,7 +91,7 @@ export class CustomerFormModalComponent implements OnInit {
     this.enableAllButton();
   }
 
-  private editButtonClicked() {
+  public editButtonClicked() {
     this.enterEditMode();
   }
 

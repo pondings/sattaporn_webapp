@@ -11,8 +11,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class CustomerSelectorModalComponent implements OnInit {
 
   @Output() selectedCustomer: EventEmitter<Customer> = new EventEmitter();
-  private opened = false;
-  private customerList: Customer[] = [];
+  public opened = false;
+  public customerList: Customer[] = [];
   public form: FormGroup;
 
   constructor(private customerService: CustomerService, private fb: FormBuilder) {
@@ -30,7 +30,7 @@ export class CustomerSelectorModalComponent implements OnInit {
     this.closeModal();
   }
 
-  private onsubmit(formValue: any) {
+  public onsubmit(formValue: any) {
     const customer: Customer = new Customer;
     customer.searchKeyword = formValue.searchKeyword;
     customer.findMethod = formValue.findMethod;
@@ -39,7 +39,7 @@ export class CustomerSelectorModalComponent implements OnInit {
     );
   }
 
-  private resetForm() {
+  public resetForm() {
     this.form.reset();
     this.form.controls.findMethod.setValue('code');
   }

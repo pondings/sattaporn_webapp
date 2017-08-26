@@ -15,10 +15,10 @@ import { TranslateService } from '@ngx-translate/core';
 export class SettingModalComponent implements OnInit {
 
   @ViewChild('logoutBtn') logoutBtn: ElementRef;
-  private opened: boolean;
+  public opened: boolean;
   private userInfo: UserInStorage;
 
-  private get isLoggedIn(): boolean {
+  public get isLoggedIn(): boolean {
     return this.userInfoService.isLoggedIn();
   }
 
