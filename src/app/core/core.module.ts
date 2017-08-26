@@ -1,3 +1,4 @@
+import { LoadingService } from './loading-screen/loading.service';
 import { InterceptorService } from './services/interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthenicationService } from './services/api/authenication.service';
@@ -25,11 +26,18 @@ import { LoadingScreenComponent } from './loading-screen/loading-screen.componen
     SharedModule,
     TranslateModule,
   ],
-  declarations: [HeaderComponent, LoadingScreenComponent],
-  exports: [HeaderComponent],
+  declarations: [
+    HeaderComponent,
+    LoadingScreenComponent
+  ],
+  exports: [
+    HeaderComponent,
+    LoadingScreenComponent
+  ],
   providers: [
     AuthGuardService,
     UserInfoService,
+    LoadingService,
     AuthenicationService,
     {
       provide: HTTP_INTERCEPTORS,
