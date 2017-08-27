@@ -30,11 +30,15 @@ export class EmailService {
       }
     }
 
-    for (const key in docCodes) {
-      if (docCodes.hasOwnProperty(key)) {
-        const element = docCodes[key];
-        formData.append('docCodes', element);
+    if (docCodes.length !== 0) {
+      for (const key in docCodes) {
+        if (docCodes.hasOwnProperty(key)) {
+          const element = docCodes[key];
+          formData.append('docCodes', element);
+        }
       }
+    } else {
+      formData.append('docCodes', '');
     }
 
     return this.http.post<string>(this.url + 'send', formData, {
