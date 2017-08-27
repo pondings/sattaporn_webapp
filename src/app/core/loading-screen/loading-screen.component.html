@@ -1,5 +1,5 @@
 <div [class.loading-visibility]='!show'>
     <div class="progress loop loading-screen">
-        <progress></progress>
+        <progress *ngIf="!show"></progress>
     </div>
 </div>
